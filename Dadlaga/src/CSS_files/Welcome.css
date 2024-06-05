@@ -1,8 +1,10 @@
 .box {
+  margin-left: 50px;
     position: fixed;
     top: 0;
-    border: 1px solid black;
-    padding: 20px;
+   
+    
+    padding: 30px;
     width: 100%;
     height: 5%;
     display: flex;
@@ -11,15 +13,14 @@
   }
 .login{
   position: fixed;
-  right: 5%;
-  
+  right: 3%;
   display: flex;
 
   height: 50px;
-  width: 15%;
+  width: 20%;
   
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
 
 }
 
@@ -27,85 +28,41 @@
 {
   font-size: large;
   position: fixed;
-  left: 200px;
-  width: 30%;
+  left: 32%;
+  width: 28%;
   display: flex;
   justify-content: space-between;
 }
-
-
-
-.job-feed-container {
-  font-family: Arial, sans-serif;
-  
-  padding-top:100px;
-  padding-bottom: 640px;
-  padding-right: 700px;
-  padding-left: 730px;
-  border: 1px solid black;
+.main_image
+{
+  height: 85%;
+  width: 50%;
+  position: fixed;
+  right: 3%;
+  top: 12%;
  
-  text-align: center;
+}
+.main_word
+{
+  position: fixed;
+  top: 20%;
+  left: 5%;
+  border: 1px solid black;
+  height: 60%;
+  width: 40%;
 }
 
-.search-bar {
+
+.logo
+{
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  align-items: center;
+  position: fixed;
+  width: 14.5%;
+  justify-content: space-between;
 }
 
-.search-bar input {
-  padding: 10px;
-  width: 300px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.search-bar button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #0073b1;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.post-resume {
-  margin-bottom: 20px;
-}
-
-.post-resume a {
-  color: #0073b1;
-  text-decoration: none;
-  margin: 0 5px;
-}
-
-.job-feed {
-  border-top: 2px solid #ccc;
-  padding-top: 20px;
-}
-
-.tabs {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  margin-bottom: 20px;
-}
-
-.tabs span {
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.job-feed-content p {
-  margin: 10px 0;
-}
-
-.job-feed-content button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #0073b1;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
+.background
+{
+  
 }

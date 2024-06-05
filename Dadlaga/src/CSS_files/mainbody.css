@@ -1,11 +1,15 @@
-/*.job-feed-container {
+.job-feed-container {
     font-family: Arial, sans-serif;
     
-    padding-top:100px;
-    padding-bottom: 640px;
-    padding-right: 700px;
-    padding-left: 730px;
-    border: 1px solid black;
+    
+    position: fixed;
+    padding-top: 30px;
+    top: 20%;
+    left: 5%;
+    border: 1px solid rgb(0, 0, 0);
+    height: 60%;
+    width: 40%;
+ 
    
     text-align: center;
   }
@@ -27,7 +31,7 @@
   .search-bar button {
     padding: 10px 20px;
     border: none;
-    background-color: #0073b1;
+    background-color: black;
     color: white;
     border-radius: 4px;
     cursor: pointer;
