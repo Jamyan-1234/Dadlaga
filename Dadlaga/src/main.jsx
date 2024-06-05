@@ -1,10 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import Welcome from './Pages/Welcome'
+import Welcome from './Pages/Welcome.jsx'
+
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Welcome />
+   
   </React.StrictMode>,
 )
