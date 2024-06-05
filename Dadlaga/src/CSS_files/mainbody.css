@@ -1,7 +1,5 @@
 .job-feed-container {
     font-family: Arial, sans-serif;
-    
-    
     position: fixed;
     padding-top: 30px;
     top: 20%;
@@ -9,10 +7,9 @@
     border: 1px solid rgb(0, 0, 0);
     height: 60%;
     width: 40%;
- 
-   
+    border-radius: 10px;
     text-align: center;
-  }
+}
   
   .search-bar {
     display: flex;
@@ -75,5 +72,6 @@
     color: white;
     border-radius: 4px;
     cursor: pointer;
+    border-radius: 10px;
   }
   

@@ -1,26 +1,32 @@
+
 .box {
-  margin-left: 50px;
+    margin-left: 50px;
+    margin-right: 50%;
+    margin-top: 1%;
     position: fixed;
     top: 0;
-   
-    
-    padding: 30px;
-    width: 100%;
+    border: 1px solid;
+    padding: 20px;
+    width: 90%;
     height: 5%;
     display: flex;
     align-items: center;
-    background-color: white;
+    border-radius: 20px;
+
+
+   
   }
 .login{
+
   position: fixed;
   right: 3%;
   display: flex;
 
-  height: 50px;
   width: 20%;
   
   align-items: center;
   justify-content: space-evenly;
+  
 
 }
 
@@ -28,10 +34,11 @@
 {
   font-size: large;
   position: fixed;
-  left: 32%;
+  left: 48%;
   width: 28%;
   display: flex;
   justify-content: space-between;
+  
 }
 .main_image
 {
@@ -42,27 +49,76 @@
   top: 12%;
  
 }
-.main_word
-{
-  position: fixed;
-  top: 20%;
-  left: 5%;
-  border: 1px solid black;
-  height: 60%;
-  width: 40%;
-}
 
 
-.logo
-{
+
+.logo {
   display: flex;
   align-items: center;
+  justify-content: center; 
   position: fixed;
   width: 14.5%;
-  justify-content: space-between;
+  height: 10%;
+  
 }
+.logo_name
+{
+ top: 1px;
+ text-align: center;
+ height: 100%;
+ display: flex;
+ 
+ 
+}
+
 
 .background
 {
+  background-size: cover;
+  background-position: center;
+  background-image: url('../images/background.jpg');
+  width: 100vw;
+  height: 100vh;
+}
+
+.main_card
+{
+  height: 78%;
+  width: 48%;
+  border: 0.5px solid rgb(255, 0, 51);
+  position: fixed;
+  right: 2%;
+  top: 18%;
+  display: block;
+  align-items: center;
+  justify-content: space-between;
+
   
 }
+
+.first_row
+{
+  border: 3px solid greenyellow;
+  display: flex;
+  justify-content: space-between;
+  height: 50%;
+  width: 100%;
+}
+
+.second_row
+{
+  border: 5px solid rgb(21, 0, 255);
+  display: flex;
+  justify-content: space-between;
+  height: 50%;
+  width: 100%;
+}
+
+.item1
+{
+  border: 1px solid;
+  height: 100%;
+  width: 50%;
+
+}
+

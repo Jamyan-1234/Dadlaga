@@ -1,68 +1,76 @@
 import React, { useState } from 'react';
-import './SignUp.css';
+import { Link } from 'react-router-dom';
+import '../CSS_files/SignUp.css';
 
-const SignUp = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: ''
-  });
+function SignUp() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [agreed, setAgreed] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form data:', formData);
-    // Handle form submission logic here
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Add form submission logic here
   };
 
   return (
-    <div className="signup-container">
-      <h2>Sign Up</h2>
+    <div className='main_container'>
+      <div className="signup-container">
+      <Link to="/" className="back-link">← Буцах</Link>
+      <h1>Бүртгүүлэх</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">И-мэйл *</label>
           <input
             type="email"
             id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Нууц үг *</label>
           <input
             type="password"
             id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
-        <button type="submit">Sign Up</button>
+        <div className="form-group">
+          <label htmlFor="confirmPassword">Нууц үг давтах *</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div className="password-requirements">
+          <p>Тоо агуулсан</p>
+          <p>Том ба жижиг үсэг холилдсон</p>
+          <p>8 болон түүнээс дээш оронтой</p>
+        </div>
+        <div className="form-group">
+          <input
+            type="checkbox"
+            id="agree"
+            checked={agreed}
+            onChange={(e) => setAgreed(e.target.checked)}
+            required
+          />
+          <label htmlFor="agree">Үйлчилгээний нөхцөл болон Нууцлалын бодлогыг хүлээн зөвшөөрч байна.</label>
+        </div>
+        <button type="submit" className="signup-button">Бүртгүүлэх</button>
       </form>
+      <p className="login-link">Бүртгэлтэй юу? <Link to="/login">Нэвтрэх</Link></p>
     </div>
+    </div>
+    
   );
-};
+}
 
 export default SignUp;
