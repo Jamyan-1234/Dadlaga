@@ -1,18 +1,38 @@
+.image_contianer
+{
+  margin: -1px;
+  margin-left: -2px;
+  background-image: url('../images/image6.png');
+  position: fixed;
+  top: 0px;
+  height: 100%;
+  width: 60%;
+  border: 1px solid #ddd;
+  display: flex; /* Use Flexbox */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  
+  
+}
+
 .signup-container {
-  max-width: 400px;
-  margin: 0 auto;
+  width: 40%;
+  height: 90%;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #fff;
   position: fixed;
-  right: 0px;
-  top: 1%;
+  right: 0%;
+  top: 0%;
 }
 .main_container
 {
+  
   justify-content: center;
   align-items: center;
+  
 }
 
 .back-link {
@@ -38,7 +58,7 @@ label {
 
 input[type="email"],
 input[type="password"] {
-  width: 100%;
+  width: 60%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;

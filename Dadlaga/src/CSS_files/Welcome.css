@@ -76,7 +76,7 @@
 {
   background-size: cover;
   background-position: center;
-  background-image: url('../images/background.jpg');
+  background-image: url('../images/image7.png');
   width: 100vw;
   height: 100vh;
 }
@@ -123,6 +123,10 @@
   align-items: center; /* Center items horizontally */
   justify-content: center; /* Center items vertically */
   border-radius: 10px;
+}
+.button_radius
+{
+  border-radius: 50px;
 }
 
 

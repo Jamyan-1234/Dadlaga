@@ -34,7 +34,7 @@ function Welcome() {
           </div>
 
           <div className='login'>
-            <button style={{ backgroundColor: 'green', color: 'white' }}>Нэвтрэх</button>
+            <button className='button_radius' style={{ backgroundColor: 'green', color: 'white' }}>Нэвтрэх</button>
             <Link to="/signup" style={{ textDecoration: 'none' }}>
               <button style={{ backgroundColor: 'blue', color: 'white' }}>
                 Бүртгүүлэх
@@ -69,7 +69,7 @@ function Welcome() {
             <div className='item1'>
             <img src={image4} height={150} width={200} alt="My Image" />
 
-              <h2>Өөрийн portfolio-г үүсгэ</h2>
+              <h2>Өөрийн CV-г үүсгэ</h2>
             </div>
           </div>
 

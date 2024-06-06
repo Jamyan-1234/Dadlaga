@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../CSS_files/SignUp.css';
-
+import desk from '../images/image5.png';
 function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -10,11 +10,15 @@ function SignUp() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add form submission logic here
+  
   };
 
   return (
+    
     <div className='main_container'>
+      <div className='image_contianer'>
+      <img src={desk} height={500} width={500} alt="My Image" />
+      </div>
       <div className="signup-container">
       <Link to="/" className="back-link">← Буцах</Link>
       <h1>Бүртгүүлэх</h1>
