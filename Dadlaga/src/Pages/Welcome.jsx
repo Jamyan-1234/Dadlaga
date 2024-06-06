@@ -3,6 +3,10 @@ import '../CSS_files/Welcome.css';
 import '../CSS_files/mainbody.css';
 import myImage from '../images/logo.png';
 import job from '../images/jobs.jpg';
+import image from '../images/image1.png';
+import image2 from '../images/image2.png';
+import image3 from '../images/image3.png';
+import image4 from '../images/image4.png';
 import { Link } from 'react-router-dom';
 
 //------------------------------------------------ Welcome Page--------------------------------------------------------------------------------------
@@ -46,21 +50,26 @@ function Welcome() {
         <div className='main_card'> 
           <div className='first_row'>
             <div className='item1'>
-              <h1>Item1</h1>
+            <img src={image} height={150} width={150} alt="My Image" />
+              <h2>Хялбар</h2>
             </div>
 
             <div className='item1'>
-              <h1>Item2</h1>
+            <img src={image2} height={170} width={250} alt="My Image" />
+            <h2>Найдвартай</h2>
             </div>
           </div>
 
           <div className='second_row'>
             <div className='item1'>
-              <h1>Item1</h1>
+            <img src={image3} height={150} width={150} alt="My Image" />
+            <h2>Хязгааргүй ажлын байр</h2>
             </div>
 
             <div className='item1'>
-              <h1>Item2</h1>
+            <img src={image4} height={150} width={200} alt="My Image" />
+
+              <h2>Өөрийн portfolio-г үүсгэ</h2>
             </div>
           </div>
 

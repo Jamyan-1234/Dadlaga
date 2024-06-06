@@ -1,17 +1,17 @@
 
 .box {
     margin-left: 50px;
-    margin-right: 50%;
+    margin-right: 50px;
     margin-top: 1%;
     position: fixed;
     top: 0;
-    border: 1px solid;
     padding: 20px;
-    width: 90%;
+    width: 92%;
     height: 5%;
     display: flex;
     align-items: center;
     border-radius: 20px;
+    border: 0.009px solid;
 
 
    
@@ -85,7 +85,7 @@
 {
   height: 78%;
   width: 48%;
-  border: 0.5px solid rgb(255, 0, 51);
+  
   position: fixed;
   right: 2%;
   top: 18%;
@@ -98,7 +98,7 @@
 
 .first_row
 {
-  border: 3px solid greenyellow;
+  
   display: flex;
   justify-content: space-between;
   height: 50%;
@@ -107,18 +107,22 @@
 
 .second_row
 {
-  border: 5px solid rgb(21, 0, 255);
+  
   display: flex;
   justify-content: space-between;
   height: 50%;
   width: 100%;
 }
 
-.item1
-{
+.item1 {
   border: 1px solid;
-  height: 100%;
-  width: 50%;
-
+  height: 95%;
+  width: 49%;
+  display: flex; /* Use Flexbox */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  border-radius: 10px;
 }
+
 
