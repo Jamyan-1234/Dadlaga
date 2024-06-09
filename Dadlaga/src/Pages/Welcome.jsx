@@ -34,8 +34,11 @@ function Welcome() {
           </div>
 
           <div className='login'>
-            <button className='button_radius'>Нэвтрэх</button>
-            <Link to="/signup" style={{ textDecoration: 'none' }}>
+            <Link to="/signUp" style={{ textDecoration: 'none' }}>
+            <button className='button_radius'>Нэвтрэх</button></Link>
+              
+
+            <Link to="/signUp" style={{ textDecoration: 'none' }}>
               <button className='sign_up_button'>
                 Бүртгүүлэх
               </button>
@@ -85,7 +88,6 @@ function Welcome() {
 
 
 
-        {/*-------------------------------------------- Navigation Bar хэсэг--------------------------------------------------------------- */}
         <div className="job-feed-container">
           <div className="search-bar">
             <input type="text" placeholder="Job title, keywords, or company" />
