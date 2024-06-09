@@ -27,16 +27,16 @@ function Welcome() {
           </div>
 
           <div className='dial'>
-            <a href="#news" style={{ color: 'black' }}>Home </a>
-            <a href="#contact" style={{ color: 'black' }}>Contact</a>
-            <a href="#about" style={{ color: 'black' }}>About us</a>
-            <a href="#about" style={{ color: 'black' }}>Ажлын зар нэмэх</a>
+            <a className='dial_font' href="#news">Home </a>
+            <a className='dial_font' href="#contact">Contact</a>
+            <a className='dial_font' href="#about">About us</a>
+            <a className='dial_font' href="#about">Ажлын зар нэмэх</a>
           </div>
 
           <div className='login'>
-            <button className='button_radius' style={{ backgroundColor: 'green', color: 'white' }}>Нэвтрэх</button>
+            <button className='button_radius'>Нэвтрэх</button>
             <Link to="/signup" style={{ textDecoration: 'none' }}>
-              <button style={{ backgroundColor: 'blue', color: 'white' }}>
+              <button className='sign_up_button'>
                 Бүртгүүлэх
               </button>
             </Link>
