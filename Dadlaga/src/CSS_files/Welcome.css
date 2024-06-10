@@ -81,7 +81,7 @@
 {
   background-size: cover;
   background-position: center;
-  background-image: url('../images/image7.png');
+  background-image: url('../images/image11.jpg');
   width: 100vw;
   height: 100vh;
 }
@@ -133,7 +133,8 @@
 {
   border-radius: 30px;
   background-color: rgb(84, 46, 198);
-  color: #e9e5d7;
+  color: #ffffff;
+  
   border: 1px solid e9e5d7;
   width: 120px;
 }

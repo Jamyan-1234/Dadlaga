@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../CSS_files/SignUp.css';
 import desk from '../images/image5.jpg';
+
 function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -10,14 +11,13 @@ function SignUp() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-  
   };
 
   return (
     <div className='main_container'>
       <div className='small_container'>
         <div className='image_container'>
-        <img src={desk} height={680} width={700} alt="My Image" />
+        <img src={desk} height={680} width={800} alt="My Image" />
         </div>
 
         <div className="signup-container">

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import '../CSS_files/Welcome.css';
 import '../CSS_files/mainbody.css';
 import myImage from '../images/logo.png';
-import job from '../images/jobs.jpg';
 import image from '../images/image1.png';
 import image2 from '../images/image2.png';
 import image3 from '../images/image3.png';
@@ -34,8 +33,11 @@ function Welcome() {
           </div>
 
           <div className='login'>
-            <Link to="/signUp" style={{ textDecoration: 'none' }}>
-            <button className='button_radius'>Нэвтрэх</button></Link>
+            <Link to="/login" style={{ textDecoration: 'none' }}>
+              <button className='button_radius'> 
+                Нэвтрэх
+                </button>
+            </Link>
               
 
             <Link to="/signUp" style={{ textDecoration: 'none' }}>

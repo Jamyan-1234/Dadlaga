@@ -14,7 +14,7 @@ background-color: #e9e5d7;
 .main_container
 {
   
-
+  background-image: url('../images/image10.jpg');
   background-color: #e9e5d7;
   height: 726px;
   width: 1534px;
@@ -26,10 +26,10 @@ background-color: #e9e5d7;
 
 .small_container
 {
-  box-shadow: 0 0 10px rgb(84, 46, 198);
+  box-shadow: 0 0 10px rgb(86, 238, 255);
   background-color: white;
   padding: 0px;
-  border: 1px solid rgb(147, 125, 210);
+  border: 1px solid rgb(157, 224, 255);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,6 +63,7 @@ h1 {
 .form-group {
   justify-content: center;
   margin-bottom: 15px;
+  
 }
 
 label {

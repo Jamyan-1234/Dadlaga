@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../CSS_files/login.css';
-import desk from '../images/image5.jpg';
+import '../CSS_files/Login.css';
+import desk from '../images/image8.jpg';
+//<Link to="/" className="back-link">← Буцах</Link>
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -10,72 +11,62 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-  
   };
 
   return (
-    <div className='main_container'>
-      <div className='small_container'>
+    <div className='mein_container'>
+      <div className='asmall_container'>
         <div className='image_container'>
-        <img src={desk} height={680} width={700} alt="My Image" />
+        <img className='for_image' src={desk} height={680} width={900} alt="My Image" />
         </div>
 
-        <div className="signup-container">
-          <Link to="/" className="back-link">← Буцазззх</Link>
+        <div className='bruh'>
+
+        </div>
+
+        
+        
+        {/* 
+        <div className="signup-containerr">
+
+          <div className='first_div'>
+           
+            <h2> Тавтай морил</h2>
+          </div>
+          
           <h1>Нэвтрэх</h1>
 
 
           
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="email">И-мэйл *</label>
               <input
                 type="email"
                 id="email"
+                placeholder="Email Хаяг"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
             <div className="form-group">
-              <label htmlFor="password">Нууц үг *</label>
+              
               <input
                 type="password"
                 id="password"
+                placeholder="Нууц үг"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="confirmPassword">Нууц үг давтах *</label>
-              <input
-                type="password"
-                id="confirmPassword"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
-            </div>
-            <div className="password-requirements">
-              <p>Тоо агуулсан</p>
-              <p>Том ба жижиг үсэг холилдсон</p>
-              <p>8 болон түүнээс дээш оронтой</p>
-            </div>
-            <div className="form-group">
-              <input
-                type="checkbox"
-                id="agree"
-                checked={agreed}
-                onChange={(e) => setAgreed(e.target.checked)}
-                required
-              />
-              <label htmlFor="agree">Нууцлалын бодлогыг хүлээн зөвшөөрч байна.</label>
-            </div>
-            <button type="submit" className="signup-button">Бүртгүүлэх</button>
+            
+            
+            
+            <button type="submit" className="signup-button">Нэвтрэх</button>
           </form>
-          <p className="login-link">Бүртгэлтэй юу? <Link to="/login">Нэвтрэх</Link></p>
-        </div>
+          
+        </div>*/}
       </div>
       
 
