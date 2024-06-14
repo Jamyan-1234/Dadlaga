@@ -9,6 +9,8 @@ background-color: #e9e5d7;
   padding: 20px; 
   background-color: #fff;
   
+  
+  
  
 }
 .main_container
@@ -63,7 +65,7 @@ h1 {
 .form-group {
   justify-content: center;
   margin-bottom: 15px;
-  
+  width: 300px;
 }
 
 label {
