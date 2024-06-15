@@ -11,13 +11,13 @@
   flex-direction: column;
   width: 400px;
   height: 680px;
-
+  
   display: flex; /* Use Flexbox */
   flex-direction: column; /* Stack items vertically */
   align-items: center; /* Center items horizontally */
   justify-content: space-around;
-  border: 1px solid rgb(0, 0, 0);
-   
+  border-left:  4px solid rgb(189, 232, 255);
+  
   
   
 }
@@ -43,7 +43,7 @@ body {
 
 /* Small container styling */
 .asmall_container {
-  box-shadow: 0 0 10px #FFFFF5;
+  box-shadow: 0 0 10px rgb(80, 75, 251);
   background-color: white;
   padding: 0px;
   border: 1px solid #FFFFF5;
@@ -55,10 +55,7 @@ body {
   border-radius: 60px;
 }
 
-.for_image
-{
-  
-}
+
 
 /* Image container styling */
 .image_container {
@@ -117,7 +114,7 @@ input[type="checkbox"] {
 
 /* Signup button styling */
 .signup-buttonn {
-  width: 50%;
+  width: 200px;
   padding: 10px;
   border: none;
   border-radius: 50px;
@@ -146,43 +143,85 @@ input[type="checkbox"] {
   text-align: center;
   
   width: 80%;
-  border: 1px solid rgb(17, 255, 223);
-  background-color: rgb(80, 255, 129);
+  background-color: rgb(84, 46, 198);
   color: white;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
+  margin-right: -100px;
 }
 
 .button_div
 {
+  
   flex-direction: column;
   display: flex;
-  border: 1px solid black;
   width: 200px;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 10px;
+  
 }
 
 .textbox_container
 {
-  border: 1px solid black;
+  
   flex-direction: column;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 250px;
+  width: 300px;
+  height: 450px;
+  
 }
 .textbox_size
 {
-  width: 200px;
+  width: 250px;
+  
+  align-items: center;
+  gap: 100px;
+  display: flex;
+  border-radius: 5px;
 }
 
 .m{
-  border: 1px solid black;
+ 
+  flex-direction: column;
+  display: flex;
+  
+  gap: 40px;
+  width: 250px;
+ 
+
+  
+  align-items: center;
+}
+
+.sizee
+{
+  width: 50px;
+}
+
+.textbox_container_gap
+{
   flex-direction: column;
   display: flex;
   
   gap: 10px;
-  width: 250px;
+}
+
+.as{
+  
+  flex-direction: column;
+  display: flex;
+  height: 500px;
+  gap: 40px;
+  border: 1px solid rgb(153, 94, 253);
+  border-radius: 15px;
+  padding: 20px;
+  
+}
+
+.forgot_link_size
+{
+  font-size: small;
 }
