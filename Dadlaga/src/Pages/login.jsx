@@ -28,7 +28,7 @@ function Login() {
         
         {/* */}
         <div className="signup-containerr">
-          <Link to="/" className="back-link">← Буцах</Link>
+          
           <div className='first_div'>
             <h2> Тавтай морил</h2>
           </div>
@@ -74,11 +74,13 @@ function Login() {
                 <Link className='forgot_link_size' to="/">Нууц үгээ мартсан уу?</Link>
                
               </div>
-              
-              
-              
-              
             </form>
+
+            <div className='new_button_css'>
+              <hr />
+              <button className='new_button'><a href="/SignUp">Шинэ хаяг үүсгэх</a></button>
+            </div>
+            
             </div>
 
           

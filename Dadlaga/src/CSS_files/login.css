@@ -187,7 +187,6 @@ input[type="checkbox"] {
  
   flex-direction: column;
   display: flex;
-  
   gap: 40px;
   width: 250px;
  
@@ -224,4 +223,25 @@ input[type="checkbox"] {
 .forgot_link_size
 {
   font-size: small;
+}
+
+.new_button_css
+{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.new_button
+{
+  border-radius: 10px;
+  border: 1px solid rgb(153, 94, 253);
+}
+
+hr
+{
+  border: 1px solid rgb(142, 142, 142);
+  width: 100%;
 }
