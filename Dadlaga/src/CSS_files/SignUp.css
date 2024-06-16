@@ -8,22 +8,16 @@ background-color: #e9e5d7;
   height: 85%;
   padding: 20px; 
   background-color: #fff;
-  
-  
-  
- 
 }
 .main_container
 {
-  
   background-image: url('../images/image10.jpg');
   background-color: #e9e5d7;
   height: 726px;
   width: 1534px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  
+  align-items: center; 
 }
 
 .small_container
@@ -35,19 +29,14 @@ background-color: #e9e5d7;
   display: flex;
   justify-content: center;
   align-items: center;
-
   overflow: hidden;
   object-fit: cover;
   border-radius: 60px;
 }
 .image_container
 {
-  
   overflow: hidden;
   object-fit: cover;
-  
-  
-
 }
 
 .back-link {
@@ -120,3 +109,32 @@ input[type="checkbox"] {
   
   justify-content: center;
 }
+
+.sign_up_button_container
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox_container
+{
+  align-items: center;
+  justify-content: center;
+  flex-direction: column-reverse;
+}
+
+.check_box_and_text_same_level
+{
+  align-items: center;
+  flex-direction: row;
+  display: flex;
+  height: 80px;
+}
+
+input[type=checkbox] { 
+  vertical-align: middle; 
+  position: relative; 
+  bottom: 2.2px; 
+} 
