@@ -28,7 +28,7 @@ function Login() {
         
         {/* */}
         <div className="signup-containerr">
-          
+          <Link to="/" className="back-link">← Буцах</Link>
           <div className='first_div'>
             <h2> Тавтай морил</h2>
           </div>

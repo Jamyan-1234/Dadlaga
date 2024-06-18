@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../CSS_files/SignUp.css';
 import desk from '../images/image5.jpg';
+import axios from 'axios';
 
 function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [agreed, setAgreed] = useState(false);
+
+
+
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -21,7 +26,7 @@ function SignUp() {
         </div>
 
         <div className="signup-container">
-         
+        <Link to="/" className="back-link">← Буцах</Link>
           <h1>Бүртгүүлэх</h1>
 
 
@@ -37,6 +42,7 @@ function SignUp() {
                 required
               />
             </div>
+            
             <div className="form-group">
               <label htmlFor="password">Нууц үг *</label>
               <input
