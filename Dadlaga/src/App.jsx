@@ -4,8 +4,14 @@ import Welcome from './Pages/Welcome';
 import SignUp from './Pages/SignUp';
 import Login from './Pages/Login.jsx'
 import ProfilePage from './Pages/ProfilePage.jsx'
-//Dadlaga/src/Pages/Login.jsx
+import About from './Pages/About.jsx'
+import { Link, useNavigate } from 'react-router-dom'; 
 
+
+
+//Dadlaga/src/Pages/Login.jsx
+//Энэ хэсэгт завхөн замуудыг зааж өгнө
+//Энэ кодны хэсэг нь веб сайтын харагдах байдалд нөлөөлөхгүй
 
 function App() {
   return (
@@ -15,6 +21,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </Router>
   );

@@ -4,66 +4,30 @@ import '../CSS_files/Welcome.css';
 import '../CSS_files/mainbody.css';
 import myImage from '../images/logo.png';
 import { Link } from 'react-router-dom';
+
 const ProfilePage = () => {
-  const [profile, setProfile] = useState({
-    
-  });
+  const [profile, setProfile] = useState({});
+  const [activeTab, setActiveTab] = useState('profile'); // State to manage active tab
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    
     setProfile((prevProfile) => ({
       ...prevProfile,
       [name]: value,
     }));
   };
 
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Profile saved:', profile);
   };
 
-  return (
-    
-        <div className='background'>
-            <div className='box'>
-                <div className='logo'>
-                    <div>
-                    <img src={myImage} height={65} width={75} alt="My Image" />
-                    </div>
-                    
-                    <h1 className='logo_name'><strong></strong>Атом</h1>
-                    
-                    
-                </div>
-
-                <div className='dial'>
-                    <a className='dial_font' href="#news">Home </a>
-                    <a className='dial_font' href="#contact">Contact</a>
-                    <a className='dial_font' href="#about">About us</a>
-                    <a className='dial_font' href="#about">Ажлын зар нэмэх</a>
-                </div>
-
-                
-                </div>
-
-      <header className="header1">
-        <img src="/path/to/profile-image.png" alt="Profile" className="profileImage" />
-        <h1>{`${profile.lastName} ${profile.firstName}`}</h1>
-        <div className="headerTabs">
-          <button>Профайл</button>
-          <button>Процесс</button>
-          <button>Тест</button>
-          <button>Дагасан компани</button>
-          <button>Хадгалсан ажил</button>
-          <button>Сонирхож буй чиглэл</button>
-        </div>
-      </header>
-
-      <main className="main">
-        <h2>Профайл</h2>
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case 'profile':
+        return (
+          <div>
+            <h2>Профайл</h2>
         <form className="form" onSubmit={handleSubmit}>
           <div className="formRow">
             <div className="formGroup">
@@ -183,30 +147,109 @@ const ProfilePage = () => {
             </div>
           </div>
           <div className="formGroup">
-              <label>Одоо ажилж байгаа эсэх</label>
-              <input type="checkbox" name="working" value={profile.working}  onChange={handleChange} required />
+              <label>Одоо сурч байгаа эсэх</label>
+              <input type="checkbox" name="learn" value={profile.learn}  onChange={handleChange} required />
             </div>
           <div className="formRow">
             <div className="formGroup">
               <label>Эхэлсэн огноо *</label>
-              <input type="date" name="jobstartdate" value={profile.companyname}  onChange={handleChange} required />
+              <input type="date" name="learnstartdate" value={profile.companyname}  onChange={handleChange} required />
             </div>
             <div className="formGroup">
-              <label>ТӨГССӨН огноо </label>
-              <input type="date" name="jobfinishdate" value={profile.jobfinishdate}  onChange={handleChange} required />
+              <label>Төгссөн огноо </label>
+              <input type="date" name="learnfinishdate" value={profile.jobfinishdate}  onChange={handleChange} required />
             </div>
           </div>
-          <div className="formGroup">
-            <label> Хийж гүйцэтгэх үүрэг </label>
-              <input type="text" name="mission" className='textarea' value={profile.mission} placeholder="0/500" onChange={handleChange} required />
+          <button type="submit" className="submitButton">Хадгалах</button>
+        </form>
+        <h2>Хэл </h2>
+        <form className="form" onSubmit={handleSubmit}>
+          <div className="formRow">
+            
+                <div className="formGroup">
+                  <label>Хэл </label>
+                  <input type="text" name="language" value={profile.language}  onChange={handleChange} required />
+                </div>
+                <div className="formGroup">
+                  <label >Түвшин </label>
+                  <select name="level">
+                    <option value="profile.first">Анхан </option>
+                    <option value="profile.medium">Дунд </option>
+                    <option value="profile.Advanced">Ахисан </option>
+                    <option value="profile.professional">Мэргэжлийн </option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" className="submitButton">Хадгалах</button>
+        </form>
+        <h2>Ур чадвар </h2>
+        <form className="form" onSubmit={handleSubmit}>
+          <div className="formRow">
+            <div className="formGroup">
+              <input type="text" name="skill" className='textarea' value={profile.myinfo} placeholder="0/1000" onChange={handleChange} required />
+            </div>
           </div>
           <button type="submit" className="submitButton">Хадгалах</button>
         </form>
 
-      </main>
-      </div>
-    
+          </div>
+        );
+      case 'process':
+        return <div>Процесс content</div>;
+      case 'test':
+        return <div>Тест content</div>;
+      case 'companies':
+        return <div>Дагасан компани content</div>;
+      case 'savedJobs':
+        return <div>Хадгалсан ажил content</div>;
+      case 'interests':
+        return <div>Сонирхож буй чиглэл content</div>;
+      default:
+        return null;
+    }
+  };
 
+  return (
+    <div className='background'>
+      <div className='box'>
+        <div className='logo'>
+          <div>
+            <img src={myImage} height={65} width={75} alt="My Image" />
+          </div>
+          <h1 className='logo_name'><strong></strong>Атом</h1>
+        </div>
+        <div className='dial'>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+            <a className='dial_font'>Home </a>
+            </Link>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+            <a className='dial_font'>Contact </a>
+            </Link>
+            <Link to="/about" style={{ textDecoration: 'none' }}>
+            <a className='dial_font'>About us </a>
+            </Link>
+            <a className='dial_font' href="#about">Ажлын зар нэмэх</a>
+        </div>
+      </div>
+
+      <header className="header1">
+       
+        <img src="/path/to/profile-image.png" alt="Profile" className="profileImage" />
+        <h1>{`${profile.lastName} ${profile.firstName}`}</h1>
+        <div className="headerTabs">
+          <button onClick={() => setActiveTab('profile')}>Профайл</button>
+          <button onClick={() => setActiveTab('process')}>Процесс</button>
+          <button onClick={() => setActiveTab('test')}>Тест</button>
+          <button onClick={() => setActiveTab('companies')}>Дагасан компани</button>
+          <button onClick={() => setActiveTab('savedJobs')}>Хадгалсан ажил</button>
+          <button onClick={() => setActiveTab('interests')}>Сонирхож буй чиглэл</button>
+        </div>
+      </header>
+
+      <main className="main">
+        {renderTabContent()}
+      </main>
+    </div>
   );
 };
 

@@ -107,7 +107,7 @@ main {
   background-image: url('../images/image11.jpg');
   
   width: 100vw;
-  height: 100vh;
+  height: 100%;
 }
 
 .main_card {

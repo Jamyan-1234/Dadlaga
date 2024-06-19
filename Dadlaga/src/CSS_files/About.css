@@ -1,0 +1,193 @@
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    margin-top: 7%;
+   
+  }
+  
+  .about-content {
+    max-width: 600px;
+    margin-right: 20px;
+  }
+  
+  .about-content h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .about-content p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .about-content a {
+    color: #0073b1;
+    text-decoration: none;
+  }
+  
+  .about-content a:hover {
+    text-decoration: underline;
+  }
+  
+  .about-image img {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+  }
+
+  
+.box {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 1%;
+    position: fixed;
+    top: 0;
+    padding: 20px;
+    width: 92%;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    border: 0.009px solid;
+
+
+   
+  }
+.login{
+
+  position: fixed;
+  right: 3%;
+  display: flex;
+
+  width: 20%;
+  
+  align-items: center;
+  justify-content: space-evenly;
+  
+
+}
+
+.dial
+{
+ 
+  font-size: large;
+  position: fixed;
+  left: 35%;
+  width: 28%;
+  display: flex;
+  justify-content: space-between;
+  
+}
+.dial_font{
+  font-weight: 100;
+  color: black;
+}
+.main_image
+{
+  height: 85%;
+  width: 50%;
+  position: fixed;
+  right: 3%;
+  top: 12%;
+ 
+}
+
+
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  position: fixed;
+  width: 14.5%;
+  height: 10%;
+  
+}
+.logo_name
+{
+ top: 1px;
+ text-align: center;
+ height: 100%;
+ display: flex;
+ 
+ 
+}
+
+
+.background
+{
+  background-size: cover;
+  background-position: center;
+  background-image: url('../images/image11.jpg');
+  width: 100vw;
+  height: 100vh;
+}
+
+.main_card
+{
+  height: 78%;
+  width: 48%;
+  
+  position: fixed;
+  right: 2%;
+  top: 18%;
+  display: block;
+  align-items: center;
+  justify-content: space-between;
+
+  
+}
+
+.first_row
+{
+  
+  display: flex;
+  justify-content: space-between;
+  height: 50%;
+  width: 100%;
+}
+
+.second_row
+{
+  
+  display: flex;
+  justify-content: space-between;
+  height: 50%;
+  width: 100%;
+}
+
+.item1 {
+  border: 1px solid;
+  height: 95%;
+  width: 49%;
+  display: flex; /* Use Flexbox */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  border-radius: 10px;
+}
+.button_radius
+{
+  border-radius: 30px;
+  background-color: rgb(84, 46, 198);
+  color: #ffffff;
+  
+  border: 1px solid e9e5d7;
+  width: 120px;
+}
+
+.sign_up_button
+{
+  
+  background-color: #fffef9;
+  border-radius: 30px;
+  border: 1px solid black;
+}
+
+
+
+  

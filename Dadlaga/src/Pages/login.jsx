@@ -1,17 +1,41 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import '../CSS_files/Login.css';
 import desk from '../images/image8.jpg';
-//<Link to="/" className="back-link">← Буцах</Link>
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom'; 
+
+
+
+{/*Хэрвээ navigate буюу navigate('/home'); аргыг ашиглаж хуудас шилжэх бол 
+  import {useNavigate } from 'react-router-dom';
+  const navigate = useNavigate();*/}
+
+
+
+
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [agreed, setAgreed] = useState(false);
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const navigate = useNavigate();
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
-  };
+    
+    axios.post( 'http://localhost:3001/login', {email, password})
+    .then(result => {
+        console.log(result);
+        if(result.data === "Success"){
+            console.log("Login Success");
+            alert('Login successful!')
+            navigate('/about');
+        }
+        else{
+            alert('Incorrect password! Please try again.');
+        }
+    })
+    .catch(err => console.log(err));
+}
 
   return (
     <div className='mein_container'>
@@ -49,7 +73,7 @@ function Login() {
                     id="email"
                     placeholder="Email Хаяг"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(event) => setEmail(event.target.value)}
                     required
                   />
                  </div>
@@ -61,7 +85,7 @@ function Login() {
                     id="password"
                     placeholder="Нууц үг"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(event) => setPassword(event.target.value)}
                     required
                   />
                 </div>

@@ -6,6 +6,7 @@ import image from '../images/image1.png';
 import image2 from '../images/image2.png';
 import image3 from '../images/image3.png';
 import image4 from '../images/image4.png';
+
 import { Link } from 'react-router-dom';
 
 //------------------------------------------------ Welcome Page--------------------------------------------------------------------------------------
@@ -26,9 +27,15 @@ function Welcome() {
           </div>
 
           <div className='dial'>
-            <a className='dial_font' href="#news">Home </a>
-            <a className='dial_font' href="#contact">Contact</a>
-            <a className='dial_font' href="#about">About us</a>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+            <a className='dial_font'>Home </a>
+            </Link>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+            <a className='dial_font'>Contact </a>
+            </Link>
+            <Link to="/about" style={{ textDecoration: 'none' }}>
+            <a className='dial_font'>About us </a>
+            </Link>
             <a className='dial_font' href="#about">Ажлын зар нэмэх</a>
           </div>
 

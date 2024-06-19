@@ -10,7 +10,7 @@ app.use(cors());
 
 mongoose.connect('mongodb://127.0.0.1:27017/practice_mern');
 
-app.post('/register', (req, res)=>{
+app.post('/signUp', (req, res)=>{
     // To post / insert data into database
 
     const {email, password} = req.body;
@@ -28,7 +28,7 @@ app.post('/register', (req, res)=>{
     
 })
 
-app.post('/login', (req, res)=>{
+app.post('/signUp', (req, res)=>{
     // To find record from the database
     const {email, password} = req.body;
     FormDataModel.findOne({email: email})
