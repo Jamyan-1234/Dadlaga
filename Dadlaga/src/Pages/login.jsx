@@ -19,14 +19,15 @@ function Login() {
         console.log(result);
         if (result.data === "Success") {
 
-          setWarning(''); // Clear the warning
-          navigate('/about');
+          setWarning(''); 
+          navigate('/profile');
         } else {
-          setWarning('Incorrect password! Please try again.');
+          setWarning("Таны оруулсан мэдээлэл буруу байна. Та мэдээллээ дахин шалгана уу");
           setShowWarning(true);
+
           setTimeout(() => {
             setShowWarning(false);
-          }, 3000); // Hide the warning after 3 seconds
+          }, 3000); // 3 секундийн дараа анхааруулгыг байхгүй болгоно 
         }
       })
       .catch(err => {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../CSS_files/Welcome.css';
 import '../CSS_files/mainbody.css';
 import myImage from '../images/logo.png';
@@ -11,6 +11,45 @@ import { Link } from 'react-router-dom';
 
 //------------------------------------------------ Welcome Page--------------------------------------------------------------------------------------
 function Welcome() {
+  const [jobs, setJobs] = useState([]);
+  const [searchTitle, setSearchTitle] = useState('');
+  const [searchLocation, setSearchLocation] = useState ('');
+  const [filteredJobs, setFilteredJobs] = useState([]);
+  
+{/*
+  useEffect(() =>  {
+
+    const fetchJobs = async () => {
+      try{
+        const response = await fetch('/jobs.json');
+        if (!response.ok){
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.log('Fetched job data:', data);
+        setJobs(data);
+        setFilteredJobs(data);
+      } catch (error) {
+        console.error('Error fetching job data:', error);
+      }
+    };
+
+    fetchJobs();
+  }, []);
+
+  useEffect(() => {
+    const filterJobs = () => {
+      const filtered = jobs.filter( job =>
+        job.title.toLowerCase().includes(searchTitle.toLowerCase()) &&
+        job.location.toLowerCase().includes(searchLocation.toLowerCase())
+      );
+      setFilteredJobs(filtered);
+    };
+
+    filteredJobs();
+  }, [searchTitle, searchLocation, jobs]);
+  
+*/}
   return (
     <>
       {/*-------------------------------------------- Navigation Bar хэсэг--------------------------------------------------------------- */}
@@ -99,9 +138,19 @@ function Welcome() {
 
         <div className="job-feed-container">
           <div className="search-bar">
-            <input type="text" placeholder="Job title, keywords, or company" />
-            <input type="text" placeholder="City, state, zip code, or 'remote'" />
-            <button>Search</button>
+            <input
+             type="text" 
+             placeholder="Job title, keywords, or company"
+             value = {searchTitle} 
+             onChange={(e) => setSearchTitle(e.target.value)}
+             />
+            <input
+             type="text" 
+             placeholder="City, state, zip code, or 'remote'" 
+             value={searchLocation}
+             onChange={(e) => setFilteredJobs(e.target.value)}
+             />
+            <button onClick={() => setFilteredJobs(jobs)}>Search</button>
           </div>
           <div className="post-resume">
             <a href="#">Post your resume</a> - It only takes a few seconds
@@ -113,9 +162,19 @@ function Welcome() {
               <span>Recent searches</span>
             </div>
             <div className="job-feed-content">
-              <p>We're working on your personalized job feed</p>
-              <p>In the meantime, run a search to find your next job.</p>
-              <button>Find jobs</button>
+              {filteredJobs.length > 0 ? (
+                <ul className = "job-lists">
+                  {filteredJobs.map((job, index) => (
+                    <li key={index} className = "job-item">
+                      <h3>{job.title}</h3>
+                      <p>{job.description}</p>
+                      <p><strong>Location:</strong> {job.location}</p>
+                    </li>
+                  ))}
+                  </ul>
+              ) : (
+                <p>We're working on your personalized job feed</p>
+              )}
             </div>
           </div>
         </div>
@@ -123,5 +182,40 @@ function Welcome() {
     </>
   );
 }
+
+{/*
+  useEffect(() =>  {
+
+    const fetchJobs = async () => {
+      try{
+        const response = await fetch('/jobs.json');
+        if (!response.ok){
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.log('Fetched job data:', data);
+        setJobs(data);
+        setFilteredJobs(data);
+      } catch (error) {
+        console.error('Error fetching job data:', error);
+      }
+    };
+
+    fetchJobs();
+  }, []);
+
+  useEffect(() => {
+    const filterJobs = () => {
+      const filtered = jobs.filter( job =>
+        job.title.toLowerCase().includes(searchTitle.toLowerCase()) &&
+        job.location.toLowerCase().includes(searchLocation.toLowerCase())
+      );
+      setFilteredJobs(filtered);
+    };
+
+    filteredJobs();
+  }, [searchTitle, searchLocation, jobs]);
+  
+*/}
 
 export default Welcome;
