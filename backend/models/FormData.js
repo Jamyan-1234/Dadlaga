@@ -7,4 +7,4 @@ const FormDataSchema = new mongoose.Schema({
 
 const FormDataModel = mongoose.model('Хэрэглэгчдийн_Мэдээлэл', FormDataSchema); //Энэ хэсэгт Collection нэрийг зааж өгнө
 
-module.exports = FormDataModel;
+module.exports = FormDataModel;    //  <---   Export хийснээр өөр кодонд ашиглах боломжтой болно

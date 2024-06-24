@@ -9,11 +9,12 @@ app.use(express.json());
 app.use(cors());
 
 
+//mongodb+srv://tester:<password>@database.jm0jwxa.mongodb.net/?retryWrites=true&w=majority&appName=Database
 
-
+//mongodb://127.0.0.1:27017/Хэрэглэгчдийн_Мэдээлэл
 
 //---↓---↓--------↓---Өгөгдлийн сантай холбогдож буй хэсэг---↓-----↓--//
-mongoose.connect('mongodb://127.0.0.1:27017/Хэрэглэгчдийн_Мэдээлэл');
+mongoose.connect('mongodb+srv://tester:tester123456789@database.jm0jwxa.mongodb.net/Database?retryWrites=true&w=majority&appName=Database');
 //----↑------↑--------Өгөгдлийн сантай холбогдож буй хэсэг--↑----↑--↑-//
 
 
