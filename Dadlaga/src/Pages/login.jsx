@@ -21,8 +21,15 @@ function Login() {
 
           setWarning(''); 
           navigate('/profile');
-        } else {
-          setWarning("Таны оруулсан мэдээлэл буруу байна. Та мэдээллээ дахин шалгана уу");
+        }else if(result.data === "Wrong password")
+        {
+          setWarning("Таны нууц үг буруу байна");
+          setShowWarning(true);
+          setTimeout(() => {
+            setShowWarning(false);
+          }, 3000); // 3 секундийн дараа анхааруулгыг байхгүй болгоно 
+        }else {
+          setWarning(" Хэрэглэгчийн мэдээлэл олдсонгүй. Та бүртгэл үүсгэнэ үү");
           setShowWarning(true);
 
           setTimeout(() => {
