@@ -58,24 +58,20 @@ const SignUp = () => {
                 placeholder="Enter Password"
                 className="form-control"
                 id="exampleInputPassword1"
-                onChange={(event) => setPassword(event.target.value)}
+                onChange={(event) => setPassword(event.targets.value)}
                 required
               />
             </div>
 
-            <div className="password-requirements">
-              <p>{successMessage}</p>
-              <p>Том ба жижиг үсэг холилдсон</p>
-              <p>8 болон түүнээс дээш оронтой</p>
-            </div>
+            
 
-            <button type="submit" className="signup-button">Бүртгүүлэх</button>
-          </form>
-
-          <div className='sign_up_button_container'>
+            <div className='sign_up_button_container'>
             <button type="submit" className="signup-button">Бүртгүүлэх</button> {/* Redundant button */}
             <p className="login-link">Бүртгэлтэй юу? <Link to="/login">Нэвтрэх</Link></p>
           </div>
+          </form>
+
+          
         </div>
       </div>
     </div>

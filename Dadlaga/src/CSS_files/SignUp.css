@@ -114,8 +114,9 @@ input[type="checkbox"] {
 {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
+  
 }
 
 .checkbox_container

@@ -5,9 +5,10 @@ import SignUp from './Pages/SignUp';
 import Login from './Pages/Login.jsx'
 import ProfilePage from './Pages/ProfilePage.jsx'
 import About from './Pages/About.jsx'
+import CompanyRegistration from './Pages/CompanyRegistration.jsx'
 import { Link, useNavigate } from 'react-router-dom'; 
 
-
+//<Route path="/company" element={<CompanyRegistration />} />
 
 //Dadlaga/src/Pages/Login.jsx
 //Энэ хэсэгт завхөн замуудыг зааж өгнө
@@ -22,6 +23,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/about" element={<About />} />
+        <Route path="/company" element={<CompanyRegistration />} />
       </Routes>
     </Router>
   );

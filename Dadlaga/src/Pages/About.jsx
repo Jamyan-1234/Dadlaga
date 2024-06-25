@@ -31,7 +31,9 @@ const About = () => {
             <Link to="/about" style={{ textDecoration: 'none' }}>
             <a className='dial_font'>About us </a>
             </Link>
-            <a className='dial_font' href="#about">Ажлын зар нэмэх</a>
+            <Link to="/company" style={{ textDecoration: 'none' }}>
+            <a className='dial_font'>Ажлын зар нэмэх </a>
+            </Link>
           </div>
         </div>
         <div className="about-container">

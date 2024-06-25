@@ -10,46 +10,20 @@ import image4 from '../images/image4.png';
 import { Link } from 'react-router-dom';
 
 //------------------------------------------------ Welcome Page--------------------------------------------------------------------------------------
+{/*
+const sampleJobs = [
+  {title: 'Software Developer', description: 'Lorem ipsum', location: 'City A'},
+  { title: 'Web Designer', description: 'Lorem ipsum', location: 'City B'},
+  {title: 'Data Analyst', description: 'Lorem ipsum', location: 'City C'},
+];
+*/}
 function Welcome() {
   const [jobs, setJobs] = useState([]);
   const [searchTitle, setSearchTitle] = useState('');
   const [searchLocation, setSearchLocation] = useState ('');
   const [filteredJobs, setFilteredJobs] = useState([]);
   
-{/*
-  useEffect(() =>  {
 
-    const fetchJobs = async () => {
-      try{
-        const response = await fetch('/jobs.json');
-        if (!response.ok){
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        console.log('Fetched job data:', data);
-        setJobs(data);
-        setFilteredJobs(data);
-      } catch (error) {
-        console.error('Error fetching job data:', error);
-      }
-    };
-
-    fetchJobs();
-  }, []);
-
-  useEffect(() => {
-    const filterJobs = () => {
-      const filtered = jobs.filter( job =>
-        job.title.toLowerCase().includes(searchTitle.toLowerCase()) &&
-        job.location.toLowerCase().includes(searchLocation.toLowerCase())
-      );
-      setFilteredJobs(filtered);
-    };
-
-    filteredJobs();
-  }, [searchTitle, searchLocation, jobs]);
-  
-*/}
   return (
     <>
       {/*-------------------------------------------- Navigation Bar хэсэг--------------------------------------------------------------- */}
@@ -75,7 +49,10 @@ function Welcome() {
             <Link to="/about" style={{ textDecoration: 'none' }}>
             <a className='dial_font'>About us </a>
             </Link>
-            <a className='dial_font' href="#about">Ажлын зар нэмэх</a>
+            <Link to="/company" style={{ textDecoration: 'none' }}>
+            <a className='dial_font'>Ажлын зар нэмэх </a>
+            </Link>
+            
           </div>
 
           <div className='login'>
@@ -135,7 +112,7 @@ function Welcome() {
 
 
 
-
+{/**/}
         <div className="job-feed-container">
           <div className="search-bar">
             <input
@@ -183,39 +160,5 @@ function Welcome() {
   );
 }
 
-{/*
-  useEffect(() =>  {
-
-    const fetchJobs = async () => {
-      try{
-        const response = await fetch('/jobs.json');
-        if (!response.ok){
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        console.log('Fetched job data:', data);
-        setJobs(data);
-        setFilteredJobs(data);
-      } catch (error) {
-        console.error('Error fetching job data:', error);
-      }
-    };
-
-    fetchJobs();
-  }, []);
-
-  useEffect(() => {
-    const filterJobs = () => {
-      const filtered = jobs.filter( job =>
-        job.title.toLowerCase().includes(searchTitle.toLowerCase()) &&
-        job.location.toLowerCase().includes(searchLocation.toLowerCase())
-      );
-      setFilteredJobs(filtered);
-    };
-
-    filteredJobs();
-  }, [searchTitle, searchLocation, jobs]);
-  
-*/}
 
 export default Welcome;

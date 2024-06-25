@@ -1,0 +1,167 @@
+.box {
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 1%;
+  position: fixed;
+  top: 0;
+  padding: 20px;
+  width: 92%;
+  height: 5%;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  border: 0.009px solid;
+}
+
+.login {
+  position: fixed;
+  right: 3%;
+  display: flex;
+  width: 20%;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.dial {
+  font-size: large;
+  position: fixed;
+  left: 35%;
+  width: 28%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dial_font {
+  font-weight: 100;
+  color: black;
+  text-decoration: none;
+}
+
+.main_image {
+  height: 85%;
+  width: 50%;
+  position: fixed;
+  right: 3%;
+  top: 12%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  position: fixed;
+  width: 14.5%;
+  height: 10%;
+}
+
+.logo_name {
+  top: 1px;
+  text-align: center;
+  height: 100%;
+  display: flex;
+}
+
+.background {
+  background-size: cover;
+  background-position: center;
+  background-image: url('../images/image11.jpg');
+  width: 100vw;
+  height: 100%;
+}
+
+.main_card {
+  height: 78%;
+  width: 48%;
+  position: fixed;
+  right: 2%;
+  top: 18%;
+  display: block;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.first_row {
+  display: flex;
+  justify-content: space-between;
+  height: 50%;
+  width: 100%;
+}
+
+.second_row {
+  display: flex;
+  justify-content: space-between;
+  height: 50%;
+  width: 100%;
+}
+
+.item1 {
+  border: 1px solid;
+  height: 95%;
+  width: 49%;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  border-radius: 10px;
+}
+
+.button_radius {
+  border-radius: 30px;
+  background-color: rgb(84, 46, 198);
+  color: #ffffff;
+  border: 1px solid e9e5d7;
+  width: 120px;
+}
+
+.sign_up_button {
+  background-color: #fffef9;
+  border-radius: 30px;
+  border: 1px solid black;
+}
+
+.company-registration {
+ 
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 7%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.company-registration h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: calc(100% - 20px);
+  padding: 8px;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #6c63ff;
+  color: #000000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #5551d8;
+}

@@ -9,12 +9,24 @@ app.use(express.json());
 app.use(cors());
 
 
+const port = 3000;
+
+
+
+
+
+
+
 //mongodb+srv://tester:<password>@database.jm0jwxa.mongodb.net/?retryWrites=true&w=majority&appName=Database
 
 //mongodb://127.0.0.1:27017/Хэрэглэгчдийн_Мэдээлэл
 
+// user name = tester
+// Password = tester123456789
+
+
 //---↓---↓--------↓---Өгөгдлийн сантай холбогдож буй хэсэг---↓-----↓--//
-mongoose.connect('mongodb+srv://tester:tester123456789@database.jm0jwxa.mongodb.net/Database?retryWrites=true&w=majority&appName=Database');
+mongoose.connect('mongodb+srv://tester:tester123456789@database.jm0jwxa.mongodb.net/Parent_Database?retryWrites=true&w=majority&appName=Database');
 //----↑------↑--------Өгөгдлийн сантай холбогдож буй хэсэг--↑----↑--↑-//
 
 
@@ -122,6 +134,8 @@ app.listen(3001, () => {
 
 
 
+
+
 {/*       ---------------------- Шалгалт хийхгүйгээр шууд өгөгдлийн сан руу хадгална--------------------------
 app.post('/register', (req, res) => {
     // To post / insert data into the database
@@ -135,3 +149,5 @@ app.post('/register', (req, res) => {
         .catch(err => res.json(err));
 });------------------------------------------------------------------------------------------------
 */}
+
+
