@@ -5,7 +5,8 @@ import SignUp from './Pages/SignUp';
 import Login from './Pages/Login.jsx'
 import ProfilePage from './Pages/ProfilePage.jsx'
 import About from './Pages/About.jsx'
-import CompanyRegistration from './Pages/CompanyRegistration.jsx'
+import Create_job from './Pages/Create_job.jsx'
+import Turshilt from './Pages/turshilt.jsx';
 import { Link, useNavigate } from 'react-router-dom'; 
 
 //<Route path="/company" element={<CompanyRegistration />} />
@@ -23,7 +24,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/about" element={<About />} />
-        <Route path="/company" element={<CompanyRegistration />} />
+        <Route path="/create_job" element={<Create_job />} />
+        <Route path="/turshilt" element={<Turshilt />} />
       </Routes>
     </Router>
   );

@@ -3,6 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const FormDataModel = require ('./models/FormData');
 const bodyParser = require('body-parser');
+const FormDataModel1 = require('./models/FormData1');
+
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -103,6 +105,18 @@ app.post('/login', (req, res)=>{
 
 
 
+app.get('/read', async (req, res) => {
+  try {
+    const result = await FormDataModel.find({}); //QUERRY Бичигдэж буй хэсэг
+    res.send(result);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
+
+
+
 app.listen(3001, () => {
     console.log("Server listining on http://127.0.0.1:3001");
 
@@ -115,7 +129,14 @@ app.listen(3001, () => {
 
 
 
-
+app.get('/reade', async (req, res) => {
+    try {
+      const result = await FormDataModel1.find({}); //tesssst
+      res.send(result);
+    } catch (err) {
+      res.send(err);
+    }
+  });
 
 
 
@@ -152,50 +173,11 @@ app.post('/register', (req, res) => {
 
 
 
+//TEST
+app.post('/test', (req, res)=>{
 
-
-// MongoDB Atlas connection string
-const url = 'mongodb+srv://tester:tester123456789@database.jm0jwxa.mongodb.net/';
-const dbName = 'Parent_Database';
-
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// Handle form submission
-app.post('/submit', async (req, res) => {
-  const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
-
-  try {
-    await client.connect();
-    const db = client.db(dbName);
-    const collection = db.collection('хэрэглэгчдийн_мэдээлэл');
-
-    const insertResult = await collection.insertOne(req.body);
-    console.log('Inserted document:', insertResult.ops);
-
-    res.status(200).json({ message: 'Data inserted successfully' });
-  } catch (error) {
-    console.error('Error inserting data:', error);
-    res.status(500).json({ message: 'Error inserting data into MongoDB' });
-  } finally {
-    await client.close();
-  }
-});
-
-// Endpoint to fetch data
-app.get('/data', async (req, res) => {
-  const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
-
-  try {
-    await client.connect();
-    const db = client.db(dbName);
-    const collection = db.collection('хэрэглэгчдийн_мэдээлэл');
-
-    const data = await collection.find({}).toArray();
-    res.status(200).json(data);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    res.status(500).json({ message: 'Error fetching data from MongoDB' });
-  } finally {
-    await client.close();
-  }
-});
+    FormDataModel1.create(req.body)
+            .then(log_reg_form => res.json(log_reg_form))
+            .catch(err => res.json(err))
+    
+})

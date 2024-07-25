@@ -22,6 +22,7 @@ const SignUp = () => {
         } else {
           setSuccessMessage("Амжилттай бүртгэгдлээ");
           alert("Амжилттай бүртгэгдлээ");
+          navigate("/");
         }
       })
       .catch(err => console.log(err));
@@ -58,7 +59,7 @@ const SignUp = () => {
                 placeholder="Enter Password"
                 className="form-control"
                 id="exampleInputPassword1"
-                onChange={(event) => setPassword(event.targets.value)}
+                onChange={(event) => setPassword(event.target.value)}
                 required
               />
             </div>
@@ -66,7 +67,7 @@ const SignUp = () => {
             
 
             <div className='sign_up_button_container'>
-            <button type="submit" className="signup-button">Бүртгүүлэх</button> {/* Redundant button */}
+            <button type="submit" className="signup-button">Бүртгүүлэх</button> 
             <p className="login-link">Бүртгэлтэй юу? <Link to="/login">Нэвтрэх</Link></p>
           </div>
           </form>

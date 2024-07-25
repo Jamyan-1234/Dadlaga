@@ -186,7 +186,7 @@ const ProfilePage = () => {
         <form className="form" onSubmit={handleSubmit}>
           <div className="formRow">
             <div className="formGroup">
-              <input type="text" name="skill" className='textarea' value={profile.myinfo} placeholder="0/1000" onChange={handleChange} required />
+              <input type="text" name="skill" className='textarea' value={profile.skill} placeholder="0/1000" onChange={handleChange} required />
             </div>
           </div>
           <button type="submit" className="submitButton">Хадгалах</button>
