@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 //------------------------------------------------ Welcome Page--------------------------------------------------------------------------------------
 
 function Turshilt() {
-  const [foodList, setFoodList] = useState([]);
+  const [jobList, setjobList] = useState([]);
 
 
 
@@ -21,7 +21,7 @@ function Turshilt() {
   
   useEffect(() => {
     Axios.get("http://localhost:3001/reade").then((response) => {
-      setFoodList(response.data);
+      setjobList(response.data);
     });
   }, []);
 
@@ -162,7 +162,7 @@ function Turshilt() {
           </form>
 
           <div className='Database_item_storing_container'>
-            {foodList.map((val, key) => {
+            {jobList.map((val, key) => {
                 return (
 
 
@@ -178,8 +178,8 @@ function Turshilt() {
                       <h6>{val.message}</h6>
                       </div>
                         
+                        <h6>{val._id}</h6>
                         
-                        <h6>{val.name}</h6>
                     </div>
 
 

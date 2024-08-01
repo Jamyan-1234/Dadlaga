@@ -54,7 +54,7 @@
   width: 600px;
   height: 30px;
   border-radius: 10px;
-  background-color: aliceblue;
+  background-color: #F1F1F5;
   border: none;
   outline: none;
 }
@@ -76,12 +76,48 @@
   width: 600px;
   height: 130px;
   border-radius: 10px;
-  background-color: aliceblue;
+  background-color: #F1F1F5;
   border: none;
   outline: none;
   vertical-align: top; /* Aligns text at the top */
   text-align: start;
 }
+
+
+
+
+
+
+
+.job_hour_type_box
+{
+  padding-left: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.job_hour_type_box_style
+{
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #F1F1F5;
+  border: none;
+  outline: none;
+  vertical-align: top; 
+  padding-left: 10px;
+  text-align: start;
+}
+
+select{
+  outline: none;
+  height: 50px;
+  line-height: 50px;
+  padding:0px 20px;
+}
+
+ 
 
 
 

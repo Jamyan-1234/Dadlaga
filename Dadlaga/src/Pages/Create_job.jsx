@@ -19,10 +19,18 @@ function create_job() {
   const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
 
+
+
+  const [jobType, setJobType] = useState('');
+
+    const handleChange = (event) => {
+        setJobType(event.target.value);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios.post('http://localhost:3001/register', { email, password })
+    axios.post('http://localhost:3001/register', { email, password, jobType})
       .then(result => {
         console.log(result);
         if (result.data === "Already registered") {
@@ -127,17 +135,39 @@ function create_job() {
               />
             </div>
           </div>
-          <button type="submit">Бүртгүүлэх</button> 
+          
           
 
 
 
 
 
+          <div className='job_hour_type_box'>
+            <h3>Ажлийн цагийн төрөл</h3> 
+
+            <div>
+                <select 
+                    className='job_hour_type_box_style' 
+                    value={jobType} с
+                    onChange={(event) => setJobType(event.target.value)}
+                    required
+                >
+                    <option value="" disabled>Сонгох</option>
+                    <option value="full-time">Full-time</option>
+                    <option value="part-time">Part-time</option>
+                </select>
+            </div>
+            
+          </div>
 
 
 
 
+
+          
+
+
+          <button type="submit">Бүртгүүлэх</button> 
 
 
 

@@ -239,7 +239,6 @@ function Welcome() {
           </FormControl>
         ))}
       </Box>
-      {/* End of Search Categories */}
 
      
       <div className='Database_item_storing_container'>
@@ -252,11 +251,12 @@ function Welcome() {
               <h6>{val.password}</h6>
             </div>
             <h6>{val.name}</h6>
+            <h6>{val.jobType}</h6>
             <button>apply</button>
           </div>
         ))}
       </div>
-      {/* End of Database Items */}
+      
     </div>
   );
 }
