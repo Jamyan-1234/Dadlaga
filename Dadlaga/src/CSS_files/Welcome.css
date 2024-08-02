@@ -57,13 +57,14 @@
 .item { 
   display: flex;                           /* Өгөгдлийн сангийн мэдээлэл нэг тус бүрийн CSS*/
   flex-direction: column;
-  background-color: #f9f9f9;
+  background-color: rgb(215, 229, 208);
   text-align: center;
   border-radius: 20px;
   height: 300px;
   width: 90%;
   justify-content: space-between;
   align-items: center;
+  border-radius: 13px;
 }
 
 
