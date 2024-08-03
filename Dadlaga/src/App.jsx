@@ -6,8 +6,8 @@ import Login from './Pages/Login.jsx'
 import ProfilePage from './Pages/ProfilePage.jsx'
 import About from './Pages/About.jsx'
 import Create_job from './Pages/Create_job.jsx'
-import Turshilt from './Pages/turshilt.jsx';
 import { Link, useNavigate } from 'react-router-dom'; 
+import Welcome_logged from './Pages/Welcome_Logged.jsx';
 
 //<Route path="/company" element={<CompanyRegistration />} />
 
@@ -25,7 +25,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/create_job" element={<Create_job />} />
-        <Route path="/turshilt" element={<Turshilt />} />
+        <Route path="/welcome_logged" element={<Welcome_logged />} />
       </Routes>
     </Router>
   );

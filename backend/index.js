@@ -2,8 +2,8 @@ const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const FormDataModel = require ('./models/FormData');
+const FormDataModel1 = require ('./models/Job_model');
 const bodyParser = require('body-parser');
-const FormDataModel1 = require('./models/FormData1');
 
 const app = express();
 app.use(express.json());
@@ -41,7 +41,7 @@ mongoose.connect('mongodb+srv://tester:tester123456789@database.jm0jwxa.mongodb.
 
 //---↓---↓--------↓--------↓---------↓---------↓-----INSERT буюу Бүртгэл үүсгэх----↓----------↓----↓---------↓-------↓--//
 
-// Энэ хэсэг нь бүртгэл үүсгэж, датаг өгөгдлийн сан руу оруулах хэсэг юм
+// Энэ хэсэг нь бүртгэл үүсгэж, датаг өгөгдлийн сан руу оруулах хэсэг юм                      (ACTIVE)
 
 app.post('/register', (req, res)=>{
 
@@ -74,7 +74,7 @@ app.post('/register', (req, res)=>{
 
 //---↓---↓--------↓--------↓---------↓---------↓SEARCH буюу Өгөгдлийн сангаас мэдээлэл хайх----↓----------↓----↓---------↓------
 
-// Энэ хэсэг нь өгөгдлийн сангаас мэдэээлэл хайх хэсэг юм 
+// Энэ хэсэг нь өгөгдлийн сангаас мэдэээлэл хайх хэсэг юм                         (ACTIVE)
 
 app.post('/login', (req, res)=>{
     // To find record from the database
@@ -105,14 +105,72 @@ app.post('/login', (req, res)=>{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---↓---↓--------↓--------↓---------↓---------↓-----Aжлын зар үүсгэх----↓----------↓----↓---------↓-------↓--//
+
+// Энэ хэсэг нь ажлын зар үүсгэж, датаг өгөгдлийн сан руу оруулах хэсэг юм                      (ACTIVE)
+
+app.post('/create_job', (req, res)=>{
+
+  FormDataModel1.create(req.body)
+  res.json("success")
+  
+})
+//----↑------↑-------↑--------↑-----↑-----↑----↑------Aжлын зар үүсгэх------↑----------↑---------↑--------↑----//
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---↓---↓--------↓--------↓---------↓---------↓-----Aжлын зар FETCH----↓----------↓----↓---------↓-------↓--//
+
+
+
+app.get('/read_jobs', async (req, res) => {
+  try {
+    const job_infos = await FormDataModel1.find({}); 
+    res.send(job_infos);
+  } catch (err) {
+    res.send(err);
+  }
+});
+//----↑------↑-------↑--------↑-----↑-----↑----↑------Aжлын зар FETCH------↑----------↑---------↑--------↑----//
+
+
+
+
+
 app.get('/read', async (req, res) => {
   try {
-    const result = await FormDataModel.find({}); //QUERRY Бичигдэж буй хэсэг
+    const result = await FormDataModel.find({}); //Өгөгдлийн сангаас ажлийн мэдээллүүдийг татаж буй хэсэг
     res.send(result);
   } catch (err) {
     res.send(err);
   }
 });
+
+
 
 
 
@@ -127,16 +185,6 @@ app.listen(3001, () => {
 
 
 
-
-
-app.get('/reade', async (req, res) => {
-    try {
-      const result = await FormDataModel1.find({}); //tesssst
-      res.send(result);
-    } catch (err) {
-      res.send(err);
-    }
-  });
 
 
 
@@ -171,13 +219,3 @@ app.post('/register', (req, res) => {
 */}
 
 
-
-
-//TEST
-app.post('/test', (req, res)=>{
-
-    FormDataModel1.create(req.body)
-            .then(log_reg_form => res.json(log_reg_form))
-            .catch(err => res.json(err))
-    
-})

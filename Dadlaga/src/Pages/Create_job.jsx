@@ -2,26 +2,41 @@ import Axios from 'axios';
 import { useState, useEffect } from 'react';
 import '../CSS_files/create_job.css';;
 import myImage from '../images/logo.png';
-
 import { Link } from 'react-router-dom';
 import { height } from '@mui/system';
-
-
-
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 
 function create_job() {
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [job_head, setJob_head] = useState('');
+  const [job_description, setjob_description] = useState('');
+  const [jobType, setJobType] = useState('');
+
+
+  const [user_email, setUser_email] = useState('');
+  
+
+  useEffect(() => {
+    const token = localStorage.getItem('userEmail');
+    if (token) {
+      setUser_email(token);
+    } else {
+      navigate('/about');
+      console.log("ther is no token") // redirect to login if no token found
+    }
+  }, []);
+
+
+
+
   const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
 
 
 
-  const [jobType, setJobType] = useState('');
+  
 
     const handleChange = (event) => {
         setJobType(event.target.value);
@@ -30,7 +45,7 @@ function create_job() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios.post('http://localhost:3001/register', { email, password, jobType})
+    axios.post('http://localhost:3001/create_job', { user_email,job_head, job_description, jobType})
       .then(result => {
         console.log(result);
         if (result.data === "Already registered") {
@@ -114,7 +129,7 @@ function create_job() {
               placeholder='Зөөгч, Савлагч, Нягтлан бодогч гэх мэт'
                 type="text"
                 required
-                onChange={(event) => setEmail(event.target.value)}
+                onChange={(event) => setJob_head(event.target.value)}
               />
             </div>
           </div>
@@ -131,7 +146,7 @@ function create_job() {
               className='job_title_textbox_style'
                 type="text"
                 required
-                onChange={(event) => setPassword(event.target.value)}
+                onChange={(event) => setjob_description(event.target.value)}
               />
             </div>
           </div>

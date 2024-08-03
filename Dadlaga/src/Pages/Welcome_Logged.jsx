@@ -1,53 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-
-
-
-
 import { Box, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import '../CSS_files/Welcome.css';
 import myImage from '../images/logo.png';
 
 //------------------------------------------------ Welcome Page--------------------------------------------------------------------------------------
 
-function Welcome() {
-  const navigate = useNavigate();
+function Welcome_logged() {
   const [foodList, setFoodList] = useState([]);
   const [token, setToken] = useState("");
-
-
-
-  useEffect(() => {
-    const token = localStorage.getItem('userEmail');
-    if (token) {
-      
-      console.log("token baina, daraachiin huudas ruu shiljij baina")
-      navigate('/welcome_logged');
-    } else {
-      console.log("there is no token") 
-    }
-  }, []);
-
-
+  
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/read_jobs").then((response) => { //FETCH DATA
+    Axios.get("http://localhost:3001/read_jobs").then((response) => {
       setFoodList(response.data);
     });
   }, []);
 
-
-
-
-
-  
-
-
-
-
-  //welcome_logged
   const handleChange = (event) => {
     setFilters({
       ...filters,
@@ -307,4 +277,4 @@ function Welcome() {
   );
 }
 
-export default Welcome;
+export default Welcome_logged;

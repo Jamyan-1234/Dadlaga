@@ -11,6 +11,8 @@ function Login() {
   const [showWarning, setShowWarning] = useState(false);
   const navigate = useNavigate();
 
+  const [token, setToken] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -18,7 +20,7 @@ function Login() {
       .then(result => {
         console.log(result);
         if (result.data === "Success") {
-
+          localStorage.setItem('userEmail', email);
           setWarning(''); 
           navigate('/profile');
         }else if(result.data === "Wrong password")
