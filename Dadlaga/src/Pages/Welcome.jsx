@@ -22,8 +22,6 @@ function Welcome() {
   useEffect(() => {
     const token = localStorage.getItem('userEmail');
     if (token) {
-      
-      console.log("token baina, daraachiin huudas ruu shiljij baina")
       navigate('/welcome_logged');
     } else {
       console.log("there is no token") 
@@ -242,6 +240,21 @@ function Welcome() {
         </div>
       </div>
       {/* End of Navigation Bar буюу App Bar */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       {/* Search Categories */}
       <Box display="flex" justifyContent="space-around" flexWrap="wrap" gap={2} padding={2} marginTop={15}>

@@ -2,7 +2,7 @@ const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const FormDataModel = require ('./models/FormData');
-const FormDataModel1 = require ('./models/Job_model');
+const FormDataModel1 = require ('./models/Job_Model');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -147,7 +147,7 @@ app.post('/create_job', (req, res)=>{
 
 
 
-app.get('/read_jobs', async (req, res) => {
+app.get('/read_jobs', async (req, res) => {     //ACTIVE
   try {
     const job_infos = await FormDataModel1.find({}); 
     res.send(job_infos);
@@ -156,6 +156,44 @@ app.get('/read_jobs', async (req, res) => {
   }
 });
 //----↑------↑-------↑--------↑-----↑-----↑----↑------Aжлын зар FETCH------↑----------↑---------↑--------↑----//
+
+
+
+app.post('/read_user_jobs', async (req, res) => {
+  try {
+    const { userEmail } = req.body;
+    
+    if (!userEmail) {
+      return res.status(400).send("User email is required"); // Handle the case where email is not provided
+    }
+
+    // Find documents where user_email matches the specified email
+    const job_infos = await FormDataModel1.find({ user_email: userEmail });
+    
+    res.send(job_infos);
+  } catch (err) {
+    res.status(500).send(err); // Send a 500 status code for server errors
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

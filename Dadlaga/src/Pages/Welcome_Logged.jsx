@@ -4,12 +4,22 @@ import { Link } from 'react-router-dom';
 import { Box, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import '../CSS_files/Welcome.css';
 import myImage from '../images/logo.png';
+import { useNavigate } from 'react-router-dom';
 
 //------------------------------------------------ Welcome Page--------------------------------------------------------------------------------------
 
 function Welcome_logged() {
+  const navigate = useNavigate();
   const [foodList, setFoodList] = useState([]);
   const [token, setToken] = useState("");
+
+
+
+
+  const Delete_token = () => {
+    localStorage.removeItem('userEmail');
+    
+  };
   
 
   useEffect(() => {
@@ -188,8 +198,8 @@ function Welcome_logged() {
           <Link to="/" style={{ textDecoration: 'none' }}>
             <span className='dial_font'>Contact</span>
           </Link>
-          <Link to="/about" style={{ textDecoration: 'none' }}>
-            <span className='dial_font'>About us</span>
+          <Link to="/User_jobs" style={{ textDecoration: 'none' }}>
+            <span className='dial_font'>Миний зарууд</span>
           </Link>
           <Link to="/create_job" style={{ textDecoration: 'none' }}>
             <span className='dial_font'>Ажлын зар нэмэх</span>
@@ -197,14 +207,10 @@ function Welcome_logged() {
         </div>
 
         <div className='login'>
-          <Link to="/login" style={{ textDecoration: 'none' }}>
-            <button className='button_radius'>
-              Нэвтрэх
-            </button>
-          </Link>
-          <Link to="/signUp" style={{ textDecoration: 'none' }}>
-            <button className='sign_up_button'>
-              Бүртгүүлэх
+          
+          <Link Link to="/" style={{ textDecoration: 'none' }}>
+            <button className='sign_up_button' onClick={Delete_token}>
+              Гарах
             </button>
           </Link>
 
