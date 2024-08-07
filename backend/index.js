@@ -82,15 +82,13 @@ app.post('/login', (req, res)=>{
     FormDataModel.findOne({email: email})
     .then(user => {
         if(user){
-            // If user found then these 2 cases
             if(user.password === password) {
                 res.json("Success");
             }
             else{
                 res.json("Wrong password");
             }
-        }
-        // If user not found then 
+        } 
         else{
             res.json("No records found! ");
         }
@@ -143,9 +141,7 @@ app.post('/create_job', (req, res)=>{
 
 
 
-//---↓---↓--------↓--------↓---------↓---------↓-----Aжлын зар FETCH----↓----------↓----↓---------↓-------↓--//
-
-
+//---↓---↓--------↓--------↓---------↓---------↓-----Бүх ажлын заруудыг харуулах----↓----------↓----↓---------↓-------↓--//
 
 app.get('/read_jobs', async (req, res) => {     //ACTIVE
   try {
@@ -155,10 +151,28 @@ app.get('/read_jobs', async (req, res) => {     //ACTIVE
     res.send(err);
   }
 });
-//----↑------↑-------↑--------↑-----↑-----↑----↑------Aжлын зар FETCH------↑----------↑---------↑--------↑----//
+//----↑------↑-------↑--------↑-----↑-----↑----↑------Бүх ажлын заруудыг харуулах------↑----------↑---------↑--------↑----//
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---↓---↓--------↓--------↓---------↓---------↓-----Хэрэглэчийн өөрийн ажлын зар FETCH----↓----------↓----↓---------↓-------↓--//
+
+//Хэрэглэгч зөвхөн өөрийн ажлын заруудыг харах                      //ACTIVE
 app.post('/read_user_jobs', async (req, res) => {
   try {
     const { userEmail } = req.body;
@@ -175,6 +189,7 @@ app.post('/read_user_jobs', async (req, res) => {
     res.status(500).send(err); // Send a 500 status code for server errors
   }
 });
+//----↑------↑-------↑--------↑-----↑-----↑----↑------Хэрэглэчийн өөрийн ажлын зар FETCH------↑----------↑---------↑--------↑----//
 
 
 
@@ -197,16 +212,6 @@ app.post('/read_user_jobs', async (req, res) => {
 
 
 
-
-
-app.get('/read', async (req, res) => {
-  try {
-    const result = await FormDataModel.find({}); //Өгөгдлийн сангаас ажлийн мэдээллүүдийг татаж буй хэсэг
-    res.send(result);
-  } catch (err) {
-    res.send(err);
-  }
-});
 
 
 

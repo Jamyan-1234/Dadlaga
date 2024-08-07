@@ -16,6 +16,12 @@ function create_job() {
 
 
   const [user_email, setUser_email] = useState('');
+
+
+  const Delete_token = () => {
+    localStorage.removeItem('userEmail');
+    
+  };
   
 
   useEffect(() => {
@@ -98,16 +104,12 @@ function create_job() {
 
 
           <div className='login'>
-            <Link to="/login" style={{ textDecoration: 'none' }}>
-              <button className='button_radius'> 
-                Нэвтрэх
-                </button>
-            </Link>
+            
               
 
-            <Link to="/signUp" style={{ textDecoration: 'none' }}>
+            <Link to="/" style={{ textDecoration: 'none' }} onClick={Delete_token}>
               <button className='sign_up_button'>
-                Бүртгүүлэх
+                Гарах
               </button>
             </Link>
           </div>

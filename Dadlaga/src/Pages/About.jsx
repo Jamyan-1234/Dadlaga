@@ -40,11 +40,7 @@ const About = () => {
             <div className="about-content">
                 <h1>About ATOM</h1>
                 <p>
-                Atom is the #1 job site in the world and a global job matching and hiring platform.
-                More people get hired on Indeed than any other site because we put job seekers first,
-                giving them access to search for jobs, post resumes, research companies and more.
-                With AI-powered technology, Indeed is transforming job matching and hiring. Every day,
-                we connect millions of people to new opportunities.
+                Нэвтэрч орно уу
                 </p>
             
             </div>

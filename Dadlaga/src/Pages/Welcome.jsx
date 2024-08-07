@@ -45,7 +45,7 @@ function Welcome() {
 
 
 
-  //welcome_logged
+  
   const handleChange = (event) => {
     setFilters({
       ...filters,
