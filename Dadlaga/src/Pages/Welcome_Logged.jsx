@@ -21,7 +21,7 @@ function Welcome_logged() {
     
   };
   
-
+//---↓---↓--------↓--------↓---------↓---------↓-----Бүх ажлын заруудыг харуулах----↓----------↓----↓---------↓-------↓--//
   useEffect(() => {
     Axios.get("http://localhost:3001/read_jobs").then((response) => {
       setFoodList(response.data);
