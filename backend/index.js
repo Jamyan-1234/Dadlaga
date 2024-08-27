@@ -83,14 +83,14 @@ app.post('/login', (req, res)=>{
     .then(user => {
         if(user){
             if(user.password === password) {
-                res.json("Success");
+                res.json("Амжилттай");
             }
             else{
                 res.json("Wrong password");
             }
         } 
         else{
-            res.json("No records found! ");
+            res.json("Хаяг байхгүй");
         }
     })
 })

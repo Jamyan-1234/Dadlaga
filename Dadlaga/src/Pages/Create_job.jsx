@@ -13,6 +13,7 @@ function create_job() {
   const [job_head, setJob_head] = useState('');
   const [job_description, setjob_description] = useState('');
   const [jobType, setJobType] = useState('');
+  const [tsalin, setTsalin] = useState('');
 
 
   const [user_email, setUser_email] = useState('');
@@ -51,7 +52,7 @@ function create_job() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios.post('http://localhost:3001/create_job', { user_email,job_head, job_description, jobType})
+    axios.post('http://localhost:3001/create_job', { user_email,job_head, job_description, jobType, tsalin })
       .then(result => {
         console.log(result);
         if (result.data === "Already registered") {
@@ -172,10 +173,34 @@ function create_job() {
                     <option value="" disabled>Сонгох</option>
                     <option value="full-time">Full-time</option>
                     <option value="part-time">Part-time</option>
+                    <option value="Intern">Intern</option>
                 </select>
             </div>
             
           </div>
+
+          <div className='job_hour_type_box'>
+            <h3>Цалин</h3> 
+            <div>
+              <input
+              className='ehleh_tsalin_tetbox'
+                type="number"
+                required
+                onChange={(event) => setTsalin(event.target.value)}
+              />
+            </div>
+
+            
+            
+          </div>
+
+
+
+
+
+
+
+          
 
 
 

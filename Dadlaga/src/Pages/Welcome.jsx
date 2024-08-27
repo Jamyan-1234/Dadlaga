@@ -3,6 +3,11 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
+import Full_time_icon from '../images/time.png';
+import Part_time_icon from '../images/half.png';
+import Intern_icon from '../images/intern.png';
+
+
 
 
 
@@ -17,7 +22,7 @@ function Welcome() {
   const [foodList, setFoodList] = useState([]);
   const [token, setToken] = useState("");
 
-
+  
 
   useEffect(() => {
     const token = localStorage.getItem('userEmail');
@@ -196,12 +201,13 @@ function Welcome() {
   ];
 
 
-
+  {/*<h6>{val.jobType === 'full-time' ? 'Difficult' : val.jobType}</h6>  nohtsol shalgana  */  }
   
 
   
   return (
-    <div className='Main_container'>
+    <body>
+      <div className='Main_container'>
       {/* Navigation Bar буюу App Bar */}
       <div className='navigation_bar'>
         <div className='logo_and_name_container'>
@@ -303,20 +309,118 @@ function Welcome() {
       <div className='Database_item_storing_container'>
         {foodList.map((val, key) => (
           <div className='item' key={key}>
+
+
             <div className='title_of_job'>
+              <div className='image_container_of_profile'>
+
+              </div>
               <h6>{val.job_head}</h6>
             </div>
+
+
             <div className='description_of_job'>
               <h6>{val.job_description}</h6>
             </div>
-            <h6>{val.name}</h6>
-            <h6>{val.jobType}</h6>
-            <button>apply</button>
+
+
+            <div className='time_type_of_job'>
+
+
+
+              
+              <div className='item_1'>
+
+
+                <div className='image_container_for_item_1'> 
+                <img 
+                src={
+                 val.jobType === 'full-time' 
+                 ? Full_time_icon 
+                 : val.jobType === 'Intern'
+                 ? Intern_icon
+                  : Part_time_icon
+                } 
+                />  {/* Хэрвээ ажиллах цагийн төрөл нь full-time байвал бүтэн цагийг дүрслэх зургыг харуулна,  */}
+                </div>
+                <h6>{val.jobType}</h6>
+                
+                
+              </div>
+
+              
+
+
+            </div>
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div className='tsalin_bolon_harah_button_container'>
+
+            <h4>₮{val.tsalin} /1 өдөр</h4> 
+            <button className='button_css'>Харах</button>
+
+            </div>
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
           </div>
         ))}
       </div>
       
     </div>
+      
+    </body>
+    
   );
 }
 

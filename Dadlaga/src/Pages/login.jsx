@@ -19,7 +19,7 @@ function Login() {
     axios.post('http://localhost:3001/login', { email, password })
       .then(result => {
         console.log(result);
-        if (result.data === "Success") {
+        if (result.data === "Амжилттай") {
           localStorage.setItem('userEmail', email);
           setWarning(''); 
           navigate('/profile');

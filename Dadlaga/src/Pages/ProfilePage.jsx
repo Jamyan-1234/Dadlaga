@@ -228,7 +228,7 @@ const ProfilePage = () => {
             <Link to="/about" style={{ textDecoration: 'none' }}>
             <a className='dial_font'>About us </a>
             </Link>
-            <Link to="/company" style={{ textDecoration: 'none' }}>
+            <Link to="/create_job" style={{ textDecoration: 'none' }}>
             <a className='dial_font'>Ажлын зар нэмэх </a>
             </Link>
         </div>

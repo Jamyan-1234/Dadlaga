@@ -5,6 +5,7 @@
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
+  background-color: #ffffff;
 }
 
 
@@ -42,11 +43,13 @@
   padding-left: 100px;
   display: flex;
   flex-direction: column;
+  
 }
 
 .textbox_for_title_of_job
 {
   height: 20px;
+  
 }
 
 .job_title_style
@@ -54,11 +57,10 @@
   width: 600px;
   height: 30px;
   border-radius: 10px;
-  background-color: #F1F1F5;
+  background-color: #e1e1e1;
   border: none;
   outline: none;
 }
-
 
 
 
@@ -117,6 +119,18 @@ select{
   padding:0px 20px;
 }
 
+.ehleh_tsalin_tetbox
+{
+  width: 150px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #F1F1F5;
+  border: none;
+  outline: none;
+  vertical-align: top; /* Aligns text at the top */
+  text-align: start;
+
+}
  
 
 
