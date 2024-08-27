@@ -14,6 +14,7 @@ function create_job() {
   const [job_description, setjob_description] = useState('');
   const [jobType, setJobType] = useState('');
   const [tsalin, setTsalin] = useState('');
+  const [salbar, setSalbar] = useState('');
 
 
   const [user_email, setUser_email] = useState('');
@@ -52,7 +53,7 @@ function create_job() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios.post('http://localhost:3001/create_job', { user_email,job_head, job_description, jobType, tsalin })
+    axios.post('http://localhost:3001/create_job', { user_email,job_head, job_description, jobType, tsalin, salbar })
       .then(result => {
         console.log(result);
         if (result.data === "Already registered") {
@@ -135,6 +136,28 @@ function create_job() {
                 onChange={(event) => setJob_head(event.target.value)}
               />
             </div>
+          </div>
+
+
+
+
+          <div className='job_hour_type_box'>
+            <h3>Ажлын Салбар</h3> 
+
+            <div>
+                <select 
+                    className='job_hour_type_box_style' 
+                    value={salbar} с
+                    onChange={(event) => setSalbar(event.target.value)}
+                    required
+                >
+                    <option value="" disabled>Сонгох</option>
+                    <option value="Автомашины засвар, үйлчилгээ">Автомашины засвар, үйлчилгээ</option>
+                    <option value="Аялал, жуулчлал">Аялал, жуулчлал</option>
+                    <option value="Intern">Intern</option>
+                </select>
+            </div>
+            
           </div>
 
 

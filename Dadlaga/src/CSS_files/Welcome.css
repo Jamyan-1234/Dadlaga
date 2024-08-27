@@ -9,10 +9,6 @@
   justify-content: space-between;
   background-size: cover;
   background-position: center;
-  border: 1px solid black;
- 
-  
-
 }
 
 
@@ -26,6 +22,7 @@
   width: 100vw;
   position: fixed;
   background-color: white;
+  top: 0px;
 }
 
 .logo_and_name_container
@@ -52,10 +49,9 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 3%;
-  width: 80%;
+  width: 85%;
   margin-top: 15px; 
-  margin-left: 13%;
-  border: 1px solid black;
+  margin-left: 10px;
 
 }
 
@@ -189,24 +185,6 @@ img {
   width: 100%;
 }
 
-
-.filter_and_job_container
-{margin-top: 300px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  
-
-}
-
-
-.box
-{
-  height: 300px;
-  width: 300px;
-  border: 10px solid green;
-}
 
 
 

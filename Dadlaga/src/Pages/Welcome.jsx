@@ -385,7 +385,7 @@ function Welcome() {
 
             <div className='tsalin_bolon_harah_button_container'>
 
-            <h4>₮{val.tsalin} /1 өдөр</h4> 
+            <h4>₮{val.tsalin} /1 өдөр</h4> {val.salbar}
             <button className='button_css'>Харах</button>
 
             </div>
