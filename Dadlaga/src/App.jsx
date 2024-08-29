@@ -9,6 +9,7 @@ import Create_job from './Pages/Create_job.jsx'
 import { Link, useNavigate } from 'react-router-dom'; 
 import Welcome_logged from './Pages/Welcome_Logged.jsx';
 import User_jobs from './Pages/User_jobs.jsx';
+import SeeJob_Info from './Pages/SeeJob_Info.jsx';
 
 //<Route path="/company" element={<CompanyRegistration />} />
 
@@ -28,6 +29,7 @@ function App() {
         <Route path="/create_job" element={<Create_job />} />
         <Route path="/welcome_logged" element={<Welcome_logged />} />
         <Route path="/user_jobs" element={<User_jobs />} />
+        <Route path="/seeJob_Info" element={<SeeJob_Info />} />
       </Routes>
     </Router>
   );

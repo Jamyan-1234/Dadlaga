@@ -1,10 +1,8 @@
 
-import '../CSS_files/About.css';
-import React, { useState } from 'react';
 
+import React, { useState } from 'react';
 import myImage from '../images/logo.png';
 import { Link } from 'react-router-dom';
-import about from '../images/aboutus1.png';
 
 
 const About = () => {
@@ -38,15 +36,13 @@ const About = () => {
         </div>
         <div className="about-container">
             <div className="about-content">
-                <h1>About ATOM</h1>
+                
                 <p>
                 Нэвтэрч орно уу
                 </p>
             
             </div>
-            <div className="about-image">
-                <img src={about} alt="About " />
-            </div>
+            
         </div>
 
     </div>

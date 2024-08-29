@@ -4,12 +4,9 @@ const mongoose = require('mongoose');
 const FormDataModel = require ('./models/FormData');
 const FormDataModel1 = require ('./models/Job_Model');
 const bodyParser = require('body-parser');
-
 const app = express();
 app.use(express.json());
 app.use(cors());
-
-
 const port = 3000;
 
 
@@ -143,14 +140,24 @@ app.post('/create_job', (req, res)=>{
 
 //---↓---↓--------↓--------↓---------↓---------↓-----Бүх ажлын заруудыг харуулах----↓----------↓----↓---------↓-------↓--//
 
-app.get('/read_jobs', async (req, res) => {     //ACTIVE
+app.get('/read_jobs', async (req, res) => {
   try {
-    const job_infos = await FormDataModel1.find({}); 
-    res.send(job_infos);
+    const job_infos = await FormDataModel1.find({});
+    
+    // Ажлын зарыг нийтэлснээс хойш хэдэн хоног өнгөрснийг тооцоолоод бүх заруудыг харуулна
+    const jobsWithDays = job_infos.map(job => {
+      const today = new Date();
+      const postedDate = new Date(job.job_niitelsen_ognoo);
+      const job_niitelsen_ognoo = Math.floor((today - postedDate) / (1000 * 60 * 60 * 24)); 
+      return { ...job.toObject(), job_niitelsen_ognoo }; 
+    });
+
+    res.send(jobsWithDays);
   } catch (err) {
-    res.send(err);
+    res.status(500).send(err);
   }
 });
+
 //----↑------↑-------↑--------↑-----↑-----↑----↑------Бүх ажлын заруудыг харуулах------↑----------↑---------↑--------↑----//
 
 
@@ -213,6 +220,64 @@ app.post('/read_user_jobs', async (req, res) => {
 
 
 
+//---↓---↓--------↓--------↓---------↓---------↓-----Хэрэглэч ямар нэг зар харах----↓----------↓----↓---------↓-------↓--//
+// Хэрэглэгч ямар нэг зар хархаар товч дарах үед тухайн ажлын ID-г авч өөр хуудас руу шилжинэ
+
+app.get('/get_job/:id', async (req, res) => {
+  try {
+    const jobId = req.params.id;                                              //(ACTIVE)
+    const jobInfo = await FormDataModel1.findById(jobId);
+    if (!jobInfo) {
+      return res.status(404).send("Олдсонгүй");
+    }
+    res.json([jobInfo]); // ARRAY болгоод буцаана
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+//----↑------↑-------↑--------↑-----↑-----↑----↑------Хэрэглэч ямар нэг зар харах------↑----------↑---------↑--------↑----//
+
+
+
+
+
+
+
+
+
+//---↓---↓--------↓--------↓---------↓---------↓-----Ажлын зар харсан бол тухайн зарын харсан тоог 1-ээр ихэсгэнэ ----↓----------↓----↓---------↓-------↓--//
+app.put('/increment_seen/:id', async (req, res) => {
+  try {
+    const jobId = req.params.id;                                                    //ACTIVE
+
+    
+    const jobInfo = await FormDataModel1.findByIdAndUpdate(
+      jobId,
+      { $inc: { job_harsan_too: 1 } },
+      { new: true } 
+    );
+
+    if (!jobInfo) {
+      return res.status(404).send("Job not found");
+    }
+
+    res.json(jobInfo);
+  } catch (err) {
+    console.error('Error incrementing job_harsan_too:', err);
+    res.status(500).send("Internal server error");
+  }
+});
+//----↑------↑-------↑--------↑-----↑-----↑----↑------Ажлын зар харсан бол тухайн зарын харсан тоог 1-ээр ихэсгэнэ------↑----------↑---------↑--------↑----//
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -222,6 +287,18 @@ app.listen(3001, () => {
     console.log("Server listining on http://127.0.0.1:3001");
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

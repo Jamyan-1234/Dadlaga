@@ -1,22 +1,25 @@
-.Main_container_for_creating_job {
+.body {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: baseline;
   width: 100vw;
-  height: 100vh;
   box-sizing: border-box;
   background-color: #ffffff;
+  border: 10px black;
 }
 
 
 .navigation_bar_for_creating_job {
   border-bottom: 1px solid rgb(153, 153, 153); 
+  background-color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 10vh;
   width: 100vw;
+  position: absolute;
+  top: 0px;
 }
 
 .logo_and_name_container
@@ -30,10 +33,13 @@
 
 .job_creating_container
 {
+  margin-top: 60px;
   display: flex;
-  flex-direction: column;
-  height: 90%;
-  width: 100%;
+  flex-direction: row;
+  height: 800px;
+  width: 1550px;
+  background-color: white;
+  border: 1px solid black;
 }
 
 
@@ -76,7 +82,24 @@
 .job_title_textbox_style
 {
   width: 600px;
-  height: 130px;
+  height: 70px;
+  border-radius: 10px;
+  background-color: #F1F1F5;
+  border: none;
+  outline: none;
+  vertical-align: top; /* Aligns text at the top */
+  text-align: start;
+}
+
+
+
+
+
+
+.job_full_description_textbox_style
+{
+  width: 600px;
+  height: 170px;
   border-radius: 10px;
   background-color: #F1F1F5;
   border: none;
@@ -129,9 +152,68 @@ select{
   outline: none;
   vertical-align: top; /* Aligns text at the top */
   text-align: start;
+}
+
+
+
+.job_shaardlaga_textbox_style
+{
+  width: 600px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: #F1F1F5;
+  border: none;
+  outline: none;
+  vertical-align: top; /* Aligns text at the top */
+  text-align: start;
+}
+
+
+
+
+.utasnii_dugaar_textbox_style
+{
+  width: 160px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #F1F1F5;
+  border: none;
+  outline: none;
+  vertical-align: top; /* Aligns text at the top */
+  text-align: start;
+}
+
+
+
+.email_textbox_style
+{
+  width: 300px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #F1F1F5;
+  border: none;
+  outline: none;
+  vertical-align: top; /* Aligns text at the top */
+  text-align: start;
+}
+
+
+
+.divider
+{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+
+  box-sizing: border-box;
+  height: 100%;
+  width: 50%;
 
 }
  
+
+
+
 
 
 

@@ -6,6 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import Full_time_icon from '../images/time.png';
 import Part_time_icon from '../images/half.png';
 import Intern_icon from '../images/intern.png';
+import Eye_icon from '../images/eye.png';
+import Hour_Glass from '../images/Hour_Glass.png';
+
 
 
 
@@ -21,6 +24,7 @@ function Welcome() {
   const navigate = useNavigate();
   const [foodList, setFoodList] = useState([]);
   const [token, setToken] = useState("");
+  
 
   
 
@@ -40,6 +44,7 @@ function Welcome() {
       setFoodList(response.data);
     });
   }, []);
+  
 
 
 
@@ -56,6 +61,20 @@ function Welcome() {
       ...filters,
       [event.target.name]: event.target.value
     });
+  };
+
+
+  const handleEditClick = (id) => {
+    
+    
+    Axios.put(`http://localhost:3001/increment_seen/${id}`)
+      .then(() => {
+        localStorage.setItem('Songoson_Ajliin_ID', id); 
+        navigate('/seeJob_Info');
+      })
+      .catch(err => {
+        console.error("Алдаа гарлаа:", err);
+      });
   };
 
 
@@ -305,6 +324,8 @@ function Welcome() {
         ))}
       </Box>
 
+      
+
      
       <div className='Database_item_storing_container'>
         {foodList.map((val, key) => (
@@ -348,6 +369,50 @@ function Welcome() {
                 
               </div>
 
+
+
+
+
+
+              <div className='item_1'>
+
+
+                <div className='image_container_for_item_1'> 
+                <img 
+                src={Eye_icon} 
+                />  
+                </div>
+                <h6>Үзсэн {val.job_harsan_too}</h6>
+                <h6></h6>
+                
+                
+              </div>
+
+
+
+
+
+
+
+
+
+
+              <div className='item_2'>
+
+
+                <div className='image_container_for_item_1'> 
+                <img 
+                src={Hour_Glass} 
+                />  
+                </div>
+                <h6>{val.job_niitelsen_ognoo} Өдрийн өмнө</h6>
+                <h6></h6>
+                
+                
+              </div>
+
+             
+
               
 
 
@@ -385,8 +450,9 @@ function Welcome() {
 
             <div className='tsalin_bolon_harah_button_container'>
 
-            <h4>₮{val.tsalin} /1 өдөр</h4> {val.salbar}
-            <button className='button_css'>Харах</button>
+            <h4>₮{val.tsalin} </h4> 
+            
+            <button className='button_css'   onClick={() => handleEditClick(val._id)}>Харах</button>
 
             </div>
 
