@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../CSS_files/SignUp.css';
 import desk from '../images/image5.jpg';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
@@ -10,6 +11,26 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
+
+
+
+
+
+
+  const warning = () => {
+    Swal.fire({
+      text: "Хаяг амжилттай бүртгэгдлээ",
+      icon: "success"
+    });
+  };
+
+
+
+
+
+
+
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -19,9 +40,11 @@ const SignUp = () => {
         console.log(result);
         if (result.data === "Already registered") {
           alert("Бүртгэлтай хаяг байна");
+          
         } else {
           setSuccessMessage("Амжилттай бүртгэгдлээ");
-          alert("Амжилттай бүртгэгдлээ");
+          localStorage.setItem('userEmail', email);
+          warning();
           navigate("/");
         }
       })
@@ -67,7 +90,7 @@ const SignUp = () => {
             
 
             <div className='sign_up_button_container'>
-            <button type="submit" className="signup-button">Бүртгүүлэх</button> 
+            <button type="submit" className="signup-button"  >Бүртгүүлэх</button> 
             <p className="login-link">Бүртгэлтэй юу? <Link to="/login">Нэвтрэх</Link></p>
           </div>
           </form>

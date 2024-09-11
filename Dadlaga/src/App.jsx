@@ -10,6 +10,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import Welcome_logged from './Pages/Welcome_Logged.jsx';
 import User_jobs from './Pages/User_jobs.jsx';
 import SeeJob_Info from './Pages/SeeJob_Info.jsx';
+import Create_image from './Pages/Create_image.jsx';
+import Edit_job from './Pages/Edit_job.jsx';
 
 //<Route path="/company" element={<CompanyRegistration />} />
 
@@ -30,6 +32,7 @@ function App() {
         <Route path="/welcome_logged" element={<Welcome_logged />} />
         <Route path="/user_jobs" element={<User_jobs />} />
         <Route path="/seeJob_Info" element={<SeeJob_Info />} />
+        <Route path="/edit_job" element={<Edit_job />} />
       </Routes>
     </Router>
   );

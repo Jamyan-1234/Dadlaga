@@ -3,6 +3,7 @@ import '../CSS_files/Login.css';
 import desk from '../images/image8.jpg';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -13,6 +14,19 @@ function Login() {
 
   const [token, setToken] = useState("");
 
+
+
+
+
+
+
+  const warninge = () => {
+    Swal.fire({
+      text: "Амжилттай нэвтэрлээ",
+      icon: "success"
+    });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -21,8 +35,9 @@ function Login() {
         console.log(result);
         if (result.data === "Амжилттай") {
           localStorage.setItem('userEmail', email);
+          warninge()
           setWarning(''); 
-          navigate('/profile');
+          navigate('/welcome_logged');
         }else if(result.data === "Wrong password")
         {
           setWarning("Таны нууц үг буруу байна");
@@ -45,7 +60,7 @@ function Login() {
         setShowWarning(true);
         setTimeout(() => {
           setShowWarning(false);
-        }, 3000); // Hide the warning after 3 seconds
+        }, 3000); // 3 секундийн дараа анхааруулгыг байхгүй болгоно 
       });
   };
 
@@ -98,7 +113,7 @@ function Login() {
 
                 <div className='button_div'>
                   <button type="submit" className="signup-buttonn">Нэвтрэх</button>
-                  <Link className='forgot_link_size' to="/">Нууц үгээ мартсан уу?</Link>
+                 
                 </div>
               </form>
 

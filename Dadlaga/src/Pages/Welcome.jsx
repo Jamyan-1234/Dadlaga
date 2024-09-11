@@ -2,12 +2,17 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import 'react-notifications/lib/notifications.css';
+import Swal from 'sweetalert2';
+
 
 import Full_time_icon from '../images/time.png';
 import Part_time_icon from '../images/half.png';
 import Intern_icon from '../images/intern.png';
 import Eye_icon from '../images/eye.png';
 import Hour_Glass from '../images/Hour_Glass.png';
+import myImage from '../images/logo.png';
+
 
 
 
@@ -16,14 +21,184 @@ import Hour_Glass from '../images/Hour_Glass.png';
 
 import { Box, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import '../CSS_files/Welcome.css';
-import myImage from '../images/logo.png';
+
 
 //------------------------------------------------ Welcome Page--------------------------------------------------------------------------------------
 
 function Welcome() {
   const navigate = useNavigate();
   const [foodList, setFoodList] = useState([]);
-  const [token, setToken] = useState("");
+  const [filteredFoodList, setFilteredFoodList] = useState([]);
+  const [filters, setFilters] = useState({
+    salbar: '',
+    jobType: '',
+    location: '',
+    minSalary: '', // Add min salary
+    maxSalary: '', // Add max salary
+  });
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+
+  const salbarOptions = [
+    'Автомашин, засвар үйлчилгээ',
+    'Аялал жуулчлал',
+    'Банк, санхүү, эдийн засаг, даатгал',
+    'Барилга, Инженеринг',
+    'Бизнес менежмент',
+    'Боловсрол, нийгмийн ухаан',
+    'Дизайн',
+    'Зочид буудал, ресторан',
+    'Иргэний нисэх',
+    'Маркетинг, PR',
+    'Мэдээлэл технологи',
+    'Олон улсын байгууллага, суурин төлөөлөгчийн газар',
+    'Спорт, Гоо сайхан, Фитнесс',
+    'Тавилга, модон эдлэл үйлдвэрлэл',
+    'Төрийн болон ТББ, ОУБ',
+    'Тээвэр, гааль, агуулах',
+    'Уул уурхай, газрын тос',
+    'Үйлдвэрлэл',
+    'Үйлчилгээ',
+    'Үл хөдлөх хөрөнгө',
+    'ХАА, Байгаль экологи',
+    'Харилцаа холбоо',
+    'Харуул хамгаалалт',
+    'Худалдаа, Борлуулалт',
+    'Хууль эрх зүй',
+    'Хүний нөөц, захиргаа',
+    'Хүнсний үйлдвэрлэл',
+    'ХХэвлэл мэдээлэл, Медиа',
+    'Цахилгаан эрчим хүч, дулаан хангамж',
+    'Хууль эрх зүй',
+    'Энтертайнмент, Соёл урлаг',
+    'Эрүүл мэнд',
+  ];
+  const jobTypeOptions = [
+    'Бүтэн цагийн ажил',
+    'Цагийн ажил',
+    'Сайн дурын ажил',
+    'Дадлага',
+  ];
+
+
+  const locationOptions = [
+    'Улаанбаатар', // Ulaanbaatar
+    'Дархан', // Darkhan
+    'Эрдэнэт', // Erdenet
+    'Баянзүрх', // Bayanzurkh
+    'Хөвсгөл', // Khuvsgul
+    'Сүхбаатар', // Sukhbaatar
+    'Орхон', // Orkhon
+    'Говьсүмбэр', // Govisumber
+    'Өвөрхангай', // Ovorkhangai
+    'Булган', // Bulgan
+    'Сэлэнгэ', // Selenge
+    'Хэнтий', // Khentii
+    'Төв', // Tuv
+    'Дорнод', // Dornod
+    'Дорноговь', // Dornogovi
+    'Говь-Алтай', // Govi-Altai
+    'Увс', // Uvs
+    'Архангай', // Arkhangai
+    'Сүхбаатар', // Sukhbaatar
+    'Завхан', // Zavkhan
+    'Өмнөговь', // Omnogovi
+    'Баян-Өлгий', // Bayan-Ulgii
+    'Дундговь', // Dundgovi
+    'Ховд', // Khovd
+    'Сайхан', // Saikhan
+    'Төв аймаг', // Tuv Aimag
+    // Add more locations if needed
+];
+
+
+
+const daysSincePostedOptions = [
+  { label: 'Anytime', value: '' },
+  { label: 'Last 24 hours', value: 1 },
+  { label: 'Last 3 days', value: 3 },
+  { label: 'Last 7 days', value: 7 },
+  { label: 'Last 30 days', value: 30 },
+];
+
+  
+
+  useEffect(() => {
+    Axios.get("http://localhost:3001/read_jobs")
+      .then((response) => {
+        setFoodList(response.data);
+        setFilteredFoodList(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching jobs:', error);
+      });
+  }, []);
+
+
+  useEffect(() => {
+    let filtered = foodList;
+
+    // Filter by salbar
+    if (filters.salbar) {
+      filtered = filtered.filter((job) => job.salbar === filters.salbar);
+    }
+
+    // Filter by jobType
+    if (filters.jobType) {
+      filtered = filtered.filter((job) => job.jobType === filters.jobType);
+    }
+
+    // Filter by location
+    if (filters.location) {
+      filtered = filtered.filter((job) => job.job_bairshil === filters.location);
+    }
+
+    // Filter by salary
+    if (filters.minSalary || filters.maxSalary) {
+      filtered = filtered.filter((job) => {
+        const salary = parseFloat(job.tsalin);
+        const minSalary = parseFloat(filters.minSalary) || 0;
+        const maxSalary = parseFloat(filters.maxSalary) || Infinity;
+
+        return salary >= minSalary && salary <= maxSalary;
+      });
+    }
+
+    // Filter by days since posted
+    if (filters.daysSincePosted) {
+      const now = new Date();
+      filtered = filtered.filter((job) => {
+        const postDate = new Date(job.job_niitelsen_ognoo);
+        const diffInDays = (now - postDate) / (1000 * 60 * 60 * 24); // Difference in days
+        return diffInDays <= filters.daysSincePosted;
+      });
+    }
+
+    setFilteredFoodList(filtered);
+  }, [filters, foodList]);
+  
+
+
+
+
+
+
+  const handleChange = (event) => {
+    setFilters({
+      ...filters,
+      [event.target.name]: event.target.value
+    });
+  };
+
+
+
+
+  
+
+  
+
+  
+  
   
 
   
@@ -39,13 +214,7 @@ function Welcome() {
 
 
 
-  useEffect(() => {
-    Axios.get("http://localhost:3001/read_jobs").then((response) => { //FETCH DATA
-      setFoodList(response.data);
-    });
-  }, []);
-  
-
+ 
 
 
 
@@ -56,12 +225,23 @@ function Welcome() {
 
 
   
-  const handleChange = (event) => {
-    setFilters({
-      ...filters,
-      [event.target.name]: event.target.value
+  
+
+
+
+  const warning = () => {
+    Swal.fire({
+      title: "Анхаар!",
+      text: "Та нэвтэрч орно уу",
+      icon: "warning",
+      showConfirmButton: true,
+      confirmButtonText: "OK",
+      customClass: {
+        popup: "animate__animated animate__fadeInDown"
+      }
     });
   };
+  
 
 
   const handleEditClick = (id) => {
@@ -83,145 +263,13 @@ function Welcome() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  const [filters, setFilters] = useState({
-    salbar: '',
-    ajliin_bairnii_tuvshin: '',
-    ajillah_tsagiin_turul: '',
-    tsalin: '',
-    bairshil: '',
-    niitlegdsan_hugatsa: ''
-  });
-
-  const categories = [
-    { label: 'Салбар', value: 'salbar' },
-    { label: 'Ажлын байрны түвшин', value: 'ajliin_bairnii_tuvshin' },
-    { label: 'Ажиллах цагийн төрөл', value: 'ajillah_tsagiin_turul' },
-    { label: 'Цалин', value: 'tsalin' },
-    { label: 'Байршил', value: 'bairshil' },
-    { label: 'Нийтлэгдсэн хугацаа', value: 'niitlegdsan_hugatsa' }
-  ];
-
-  const salbarOptions = [
-    { label: 'Автомашин, засвар үйлчилгээ', value: 'Cars' },
-    { label: 'Аялал жуулчлал', value: 'Tourism' },
-    { label: 'Банк, санхүү, эдийн засаг, даатгал', value: 'Finance' },
-    { label: 'Барилга, Инженеринг', value: 'Construction' },
-    { label: 'Бизнес менежмент', value: 'Business' },
-    { label: 'Боловсрол, нийгмийн ухаан', value: 'Education' },
-    { label: 'Дизайн', value: 'Design' },
-    { label: 'Дэд бүтэц', value: 'Infrastructure' },
-    { label: 'Зочид буудал, ресторан', value: 'Hotels' },
-    { label: 'Иргэний нисэх', value: 'Civil_aviation' },
-    { label: 'Маркетинг, PR', value: 'Marketing' },
-    { label: 'Мэдээлэл технологи', value: 'It' },
-    { label: 'Олон улсын байгууллага, суурин төлөөлөгчийн газар', value: 'International_organizations' },
-    { label: 'Спорт, Гоо сайхан, Фитнесс', value: 'Sports' },
-    { label: 'Тавилга, модон эдлэл үйлдвэрлэл', value: 'wood_products' },
-    { label: 'Төрийн болон ТББ, ОУБ', value: 'NGO_IGO' },
-    { label: 'Тээвэр, гааль, агуулах', value: 'Shipping' },
-    { label: 'Уул уурхай, газрын тос', value: 'Mining' },
-    { label: 'Үйлдвэрлэл', value: 'Production' },
-    { label: 'Үйлчилгээ', value: 'Service' },
-    { label: 'Үл хөдлөх хөрөнгө', value: 'Estate' },
-    { label: 'ХАА, Байгаль экологи', value: ' Ecology' },
-    { label: 'Харилцаа холбоо', value: 'Communication' },
-    { label: 'Харуул хамгаалалт', value: 'Security' },
-    { label: 'Худалдаа, Борлуулалт', value: 'Sales' },
-    { label: 'Хууль эрх зүй', value: 'Law' },
-    { label: 'Хүний нөөц, захиргаа', value: 'HR' },
-    { label: 'Хүнсний үйлдвэрлэл', value: 'Food_industry' },
-    { label: 'Хэвлэл мэдээлэл, Медиа', value: ' Media' },
-    { label: 'Цахилгаан эрчим хүч, дулаан хангамж', value: 'Electricity' },
-    { label: 'Шинжлэх ухаан', value: 'Science' },
-    { label: 'Энтертайнмент, Соёл урлаг', value: 'Entertainment' },
-    { label: 'Эрүүл мэнд', value: 'Health' },
-    { label: 'Бусад', value: 'Other1' }
-    
-  ];
-  const ajliin_bairnii_tuvshinOptions = [
-    { label: 'Удирдах ажилтан', value: 'Manager' },
-    { label: 'Ахлах ажилтан', value: 'Senior' },
-    { label: 'Дунд ажилтан', value: 'Middle' },
-    { label: 'Анхан ажилтан', value: 'First' },
-    { label: 'Гэрээт ажилтан', value: 'Contract' },
-    { label: 'Дадлагын ажилтан', value: 'Trainee' },
-    { label: 'Цагийн ажилтан', value: 'Parttime' },
-    { label: 'Бусад', value: 'Other2' }
-  ];
-
-  const ajillah_tsagiin_turulOptions = [
-    { label: 'Бүтэн цагийн ажил', value: 'Fulltime' },
-    { label: 'Цагийн ажил', value: 'Part_time' },
-    { label: 'Ээлжийн ажил, Улирлын чанартай ажил', value: 'Seasonal' },
-    { label: 'Зөвлөх, Freelancer', value: 'Freelancer' },
-    { label: 'Дадлагын ажил', value: 'Practice' },
-    { label: 'Сайн дурын ажил', value: 'Voluntary' },
-    { label: 'Бусад', value: 'Other3' }
-  ];
-  const tsalinOptions = [
-    { label: '500,000+', value: '5000000' },
-    { label: '1,000,000+', value: '1000000' },
-    { label: '1,500,000+', value: '1500000' },
-    { label: '2,000,000+', value: '2000000' },
-    { label: '2,500,000+', value: '2500000' },
-    { label: '3,000,000+', value: '3000000' },
-    { label: '4,000,000+', value: '4000000' },
-    { label: '5,000,000+', value: '5000000' },
-    { label: 'Бусад', value: 'Other4' }
-  ];
-  const bairshilOptions = [
-    { label: 'Улаанбаатар', value: 'Ulaanbaatar' },
-    { label: 'Архангай', value: 'Arkhangai' },
-    { label: 'Баян-Өлгий', value: 'Bayan_Olgii' },
-    { label: 'Баянхонгор', value: 'Bayankhongor' },
-    { label: 'Булган', value: 'Bulgan' },
-    { label: 'Говь-Алтай', value: 'Gobi_Altai' },
-    { label: 'Говьсүмбэр', value: 'Govsumber' },
-    { label: 'Дархан-Уул', value: 'Darkhan_Uul' },
-    { label: 'Дорноговь', value: 'Dornogovi' },
-    { label: 'Дорнод', value: 'Dornod' },
-    { label: 'Дундговь', value: 'Dundgovi ' },
-    { label: 'Завхан', value: 'Zavkhan' },
-    { label: 'Орхон', value: 'Orkhon' },
-    { label: 'Сэлэнгэ', value: 'Selenge' },
-    { label: 'Сүхбаатар', value: 'Sukhbaatar' },
-    { label: 'Төв', value: 'Center' },
-    { label: 'Увс', value: 'Uvs' },
-    { label: 'Ховд', value: 'Hovd' },
-    { label: 'Хэнтий', value: 'Khentii' },
-    { label: 'Хөвсгөл', value: 'Khovsgol' },
-    { label: 'Өвөрхангай', value: 'Ovorkhangai' },
-    { label: 'Өмнөговь', value: 'Omnogovi' },
-    { label: 'Бусад', value: 'Other5' }
-  ];
-  const niitlegdsan_hugatsaOptions = [
-    { label: 'Сүүлийн 24 цаг', value: '24_hours' },
-    { label: 'Сүүлийн 7 хоног', value: '7_days' },
-    { label: 'Сүүлийн 14 хоног', value: '14_days' },
-    { label: 'Сүүлийн сар', value: 'month' },
-    { label: 'Бусад', value: 'Other6' }
-  ];
-
-
-  {/*<h6>{val.jobType === 'full-time' ? 'Difficult' : val.jobType}</h6>  nohtsol shalgana  */  }
   
+  
+  
+
+ 
+
+
 
   
   return (
@@ -235,17 +283,15 @@ function Welcome() {
         </div>
 
         <div className='dial'>
-          <Link to="/" style={{ textDecoration: 'none' }}>
-            <span className='dial_font'>Home</span>
-          </Link>
+          
           <Link to="/" style={{ textDecoration: 'none' }}>
             <span className='dial_font'>Contact</span>
           </Link>
           <Link to="/about" style={{ textDecoration: 'none' }}>
             <span className='dial_font'>About us</span>
           </Link>
-          <Link to="/create_job" style={{ textDecoration: 'none' }}>
-            <span className='dial_font'>Ажлын зар нэмэх</span>
+          <Link  style={{ textDecoration: 'none' }}>
+            <span className='dial_font' onClick={warning}>Ажлын зар нэмэх</span>
           </Link>
         </div>
 
@@ -266,6 +312,8 @@ function Welcome() {
       </div>
       {/* End of Navigation Bar буюу App Bar */}
 
+      
+
 
 
 
@@ -282,61 +330,93 @@ function Welcome() {
 
 
       {/* Search Categories */}
-      <Box display="flex" justifyContent="space-around" flexWrap="wrap" gap={2} padding={2} marginTop={15}>
-        {categories.map((category) => (
-          <FormControl key={category.value} variant="outlined" sx={{ minWidth: 120 }}>
-            <InputLabel>{category.label}</InputLabel>
-            <Select
-              value={filters[category.value]}
-              onChange={handleChange}
-              label={category.label}
-              name={category.value}
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              {category.value === 'salbar' && salbarOptions.map((option) => (
-                <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
+      <form>
+        <Box display="flex" justifyContent="space-around" flexWrap="wrap" gap={2} padding={2} marginTop={15}>
+          <select name="salbar" value={filters.salbar} onChange={handleChange} required>
+            <option value="">Ажлын салбар</option>
+            {salbarOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
 
-              ))}
-              {category.value === 'ajliin_bairnii_tuvshin' && ajliin_bairnii_tuvshinOptions.map((option) => (
-                <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
-                
-              ))}
-              {category.value === 'ajillah_tsagiin_turul' && ajillah_tsagiin_turulOptions.map((option) => (
-                <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
-                
-              ))}
-              {category.value === 'tsalin' && tsalinOptions.map((option) => (
-                <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
-                
-              ))}
-               {category.value === 'bairshil' && bairshilOptions.map((option) => (
-                <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
-                
-              ))}
-               {category.value === 'niitlegdsan_hugatsa' && niitlegdsan_hugatsaOptions.map((option) => (
-                <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
-                
-              ))}
-            </Select>
-          </FormControl>
-        ))}
-      </Box>
+          <select name="jobType" value={filters.jobType} onChange={handleChange} required>
+            <option value="">Ажиллах хэлбэр</option>
+            {jobTypeOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+
+
+
+          <select name="location" value={filters.location} onChange={handleChange} required>
+      <option value="">Байршил</option>
+      {locationOptions.map((option) => (
+        <option key={option} value={option}>
+          {option}
+        </option>
+      ))}
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+    <div className='salary-range-container'>
+            <label className='salary-range-label' htmlFor="salaryRange"></label>
+            <textarea
+              className='long-textbox'
+              name="salaryRange"
+              placeholder="Цалингийн хэмжээ"
+              value={filters.salaryRange}
+              onChange={handleChange}
+            />
+          </div>
+
+
+
+
+
+
+
+
+
+
+          
+
+
+
+
+
+
+
+
+
+          
+        </Box>
+      </form>
+      
 
       
 
      
       <div className='Database_item_storing_container'>
-        {foodList.map((val, key) => (
+        {filteredFoodList.map((val, key) => (
           <div className='item' key={key}>
 
 
             <div className='title_of_job'>
-              <div className='image_container_of_profile'>
-
-              </div>
-              <h6>{val.job_head}</h6>
+              
+              <h4>{val.job_head}</h4>
             </div>
 
 
@@ -356,11 +436,11 @@ function Welcome() {
                 <div className='image_container_for_item_1'> 
                 <img 
                 src={
-                 val.jobType === 'full-time' 
+                 val.jobType === 'Бүтэн цагийн ажил' 
                  ? Full_time_icon 
-                 : val.jobType === 'Intern'
-                 ? Intern_icon
-                  : Part_time_icon
+                 : val.jobType === 'Цагийн ажил'
+                 ? Part_time_icon
+                  : Intern_icon
                 } 
                 />  {/* Хэрвээ ажиллах цагийн төрөл нь full-time байвал бүтэн цагийг дүрслэх зургыг харуулна,  */}
                 </div>
@@ -378,12 +458,12 @@ function Welcome() {
 
 
                 <div className='image_container_for_item_1'> 
-                <img 
-                src={Eye_icon} 
-                />  
+                  <img 
+                  src={Eye_icon} 
+                  />  
                 </div>
                 <h6>Үзсэн {val.job_harsan_too}</h6>
-                <h6></h6>
+                
                 
                 
               </div>
@@ -484,6 +564,13 @@ function Welcome() {
       </div>
       
     </div>
+
+    
+
+    
+    
+
+    
       
     </body>
     

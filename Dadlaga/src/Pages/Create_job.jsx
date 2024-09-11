@@ -6,9 +6,22 @@ import { Link } from 'react-router-dom';
 import { height } from '@mui/system';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 
 function create_job() {
+
+
+  const warning = () => {
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Ажлын зарыг амжилттай нийтэлэв",
+      showConfirmButton: false,
+      timer: 1500
+    });
+  };
+
 
   const [job_head, setJob_head] = useState('');                     {/* 1.Ажлын гарчиг            */}
   const [salbar, setSalbar] = useState('');                         {/* 2.Салбар                  */}
@@ -26,6 +39,29 @@ function create_job() {
 
 
 
+  const warninge = () => {
+    Swal.fire({
+      title: "Та итгэлэтэй байна уу?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Тийм"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate('/');
+        localStorage.removeItem('userEmail');
+      }
+    });
+  };
+
+
+
+
+  
+
+
+
 
 
 
@@ -34,7 +70,7 @@ function create_job() {
 
 
   const Delete_token = () => {
-    localStorage.removeItem('userEmail');
+    warninge()
     
   };
   
@@ -72,8 +108,7 @@ function create_job() {
         if (result.data === "Already registered") {
           alert("Бүртгэлтай хаяг байна");
         } else {
-          setSuccessMessage("Амжилттай бүртгэгдлээ");
-          alert("Амжилттай бүртгэгдлээ");
+
         }
       })
       .catch(err => console.log(err));
@@ -122,7 +157,7 @@ function create_job() {
             
               
 
-            <Link to="/" style={{ textDecoration: 'none' }} onClick={Delete_token}>
+            <Link style={{ textDecoration: 'none' }} onClick={Delete_token}>
               <button className='sign_up_button'>
                 Гарах
               </button>
@@ -161,7 +196,7 @@ function create_job() {
             <div>
                 <select 
                     className='job_hour_type_box_style' 
-                    value={salbar} с
+                    value={salbar} 
                     onChange={(event) => setSalbar(event.target.value)}
                     required
                 >
@@ -292,7 +327,7 @@ function create_job() {
             <div>
                 <select 
                     className='job_hour_type_box_style' 
-                    value={job_turshlaga} с
+                    value={job_turshlaga} 
                     onChange={(event) => setjob_turshlaga(event.target.value)}
                     required
                 >
@@ -316,14 +351,15 @@ function create_job() {
             <div>
                 <select 
                     className='job_hour_type_box_style' 
-                    value={jobType} с
+                    value={jobType} 
                     onChange={(event) => setJobType(event.target.value)}
                     required
                 >
                     <option value="" disabled>Сонгох</option>
-                    <option value="full-time">Full-time</option>
-                    <option value="part-time">Part-time</option>
-                    <option value="Intern">Intern</option>
+                    <option value="Бүтэн цагийн ажил">Бүтэн цагийн ажил</option>
+                    <option value="Цагийн ажил">Цагийн ажил</option>
+                    <option value="Дадлага">Дадлага</option>
+                    <option value="Сайн дурын ажил">Сайн дурын ажил</option>
                 </select>
             </div>
             
@@ -386,7 +422,7 @@ function create_job() {
             <div>
                 <select 
                     className='job_hour_type_box_style' 
-                    value={job_zarlagch} с
+                    value={job_zarlagch} 
                     onChange={(event) => setjob_zarlagch(event.target.value)}
                     required
                 >
@@ -469,294 +505,13 @@ function create_job() {
 
           <div className='description_of_job_container'>
             <br />
-          <button type="submit">Бүртгүүлэх</button>
+          <button type="submit" onClick={warning} className='zar_nemeh_button_css'>Зар нэмэх</button>
             
           </div>
            
 
           </div>
           
-
-          {/** 
-          
-
-          <div className='title_of_job_container'>
-            <h3>Ажлын гарчиг</h3>
-
-            <div>
-              <input
-              className='job_title_style'
-              placeholder='Зөөгч, Савлагч, Нягтлан бодогч гэх мэт'
-                type="text"
-                required
-                onChange={(event) => setJob_head(event.target.value)}
-              />
-            </div>
-          </div>
-
-
-
-
-          <div className='job_hour_type_box'>
-            <h3>Ажлын Салбар</h3> 
-
-            <div>
-                <select 
-                    className='job_hour_type_box_style' 
-                    value={salbar} с
-                    onChange={(event) => setSalbar(event.target.value)}
-                    required
-                >
-                    <option value="" disabled>Сонгох</option>
-                    <option value="Автомашины засвар, үйлчилгээ">Автомашины засвар, үйлчилгээ</option>
-                    <option value="Аялал, жуулчлал">Аялал, жуулчлал</option>
-                    <option value="Intern">Intern</option>
-                </select>
-            </div>
-            
-          </div>
-
-
-
-
-
-          <div className='description_of_job_container'>
-            <h3>Ажлын товч тайлбар</h3>
-
-            <div>
-              <input
-              className='job_title_textbox_style'
-                type="text"
-                required
-                onChange={(event) => setjob_description(event.target.value)}
-              />
-            </div>
-          </div>
-
-
-
-
-
-
-          <div className='description_of_job_container'>
-            <h3>Ажлын бүтэн тайлбар</h3>
-
-            <div>
-              <input
-              className='job_full_description_textbox_style'
-                type="text"
-                required
-                onChange={(event) => setjob_description(event.target.value)}
-              />
-            </div>
-          </div>
-
-
-
-
-
-
-
-
-          <div className='description_of_job_container'>
-            <h3>Ажлын шаардлага</h3>
-
-            <div>
-              <input
-              className='job_shaardlaga_textbox_style'
-                type="text"
-                required
-                onChange={(event) => setjob_description(event.target.value)}
-              />
-            </div>
-          </div>
-
-
-
-
-
-
-
-
-
-
-          <div className='job_hour_type_box'>
-            <h3>Туршлага шаардах эсэх</h3> 
-
-            <div>
-                <select 
-                    className='job_hour_type_box_style' 
-                    value={jobType} с
-                    onChange={(event) => setJobType(event.target.value)}
-                    required
-                >
-                    <option value="" disabled>Сонгох</option>
-                    <option value="full-time">Full-time</option>
-                    <option value="part-time">Part-time</option>
-                    <option value="Intern">Intern</option>
-                </select>
-            </div>
-            
-          </div>
-          
-          
-
-
-
-
-
-          <div className='job_hour_type_box'>
-            <h3>Ажлийн цагийн төрөл</h3> 
-
-            <div>
-                <select 
-                    className='job_hour_type_box_style' 
-                    value={jobType} с
-                    onChange={(event) => setJobType(event.target.value)}
-                    required
-                >
-                    <option value="" disabled>Сонгох</option>
-                    <option value="full-time">Full-time</option>
-                    <option value="part-time">Part-time</option>
-                    <option value="Intern">Intern</option>
-                </select>
-            </div>
-            
-          </div>
-
-
-
-
-
-
-          <div className='job_hour_type_box'>
-            <h3>Байршил</h3> 
-
-            <div>
-                <select 
-                    className='job_hour_type_box_style' 
-                    value={jobType} с
-                    onChange={(event) => setJobType(event.target.value)}
-                    required
-                >
-                    <option value="" disabled>Сонгох</option>
-                    <option value="full-time">Full-time</option>
-                    <option value="part-time">Part-time</option>
-                    <option value="Intern">Intern</option>
-                </select>
-            </div>
-            
-          </div>
-
-
-
-
-
-
-
-          <div className='job_hour_type_box'>
-            <h3>Зарлагч</h3> 
-
-            <div>
-                <select 
-                    className='job_hour_type_box_style' 
-                    value={jobType} с
-                    onChange={(event) => setJobType(event.target.value)}
-                    required
-                >
-                    <option value="" disabled>Сонгох</option>
-                    <option value="full-time">Full-time</option>
-                    <option value="part-time">Part-time</option>
-                    <option value="Intern">Intern</option>
-                </select>
-            </div>
-            
-          </div>
-
-
-
-
-          <div className='job_hour_type_box'>
-            <h3>Цалин</h3> 
-            <div>
-              <input
-              className='ehleh_tsalin_tetbox'
-                type="number"
-                required
-                onChange={(event) => setTsalin(event.target.value)}
-              />
-            </div>
-
-            
-            
-          </div>
-
-
-
-
-
-
-
-
-
-
-
-
-          <div className='description_of_job_container'>
-            <h3>Утасны дугаар</h3>
-
-            <div>
-              <input
-              className='utasnii_dugaar_textbox_style'
-                type="number"
-                required
-                onChange={(event) => setjob_description(event.target.value)}
-              />
-            </div>
-          </div>
-
-
-
-
-
-          <div className='description_of_job_container'>
-            <h3>Email хаяг</h3>
-
-            <div>
-              <input
-              className='email_textbox_style'
-                type="text"
-                required
-                onChange={(event) => setjob_description(event.target.value)}
-              />
-            </div>
-          </div>
-
-
-
-
-
-
-
-          
-
-
-
-
-
-
-
-          
-
-
-
-
-
-          
-
-
-          <button type="submit">Бүртгүүлэх</button> 
-          */}
 
 
 

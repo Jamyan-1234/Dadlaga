@@ -8,6 +8,16 @@ import { useNavigate } from 'react-router-dom';
 
 
 
+
+
+
+
+import Full_time_icon from '../images/time.png';
+import Part_time_icon from '../images/half.png';
+import Intern_icon from '../images/intern.png';
+import Eye_icon from '../images/eye.png';
+import Hour_Glass from '../images/Hour_Glass.png';
+
 //Энэ хэсэг нь хэрэглэгчийн зөвхөн өөрийнхөн ажлын заруудыг харуулна (бусад хэрэглэгчдийн ажлын зарууд харагдахгүй)
 //------------------------------------------------ Миний зарууд Page--------------------------------------------------------------------------------------
 
@@ -22,6 +32,46 @@ function User_jobs() {
   const Delete_token = () => {
     localStorage.removeItem('userEmail');
     
+  };
+
+
+
+
+
+  const handleEditClick = (id) => {
+    
+    
+    Axios.put(`http://localhost:3001/increment_seen/${id}`)
+      .then(() => {
+        localStorage.setItem('Songoson_Ajliin_ID', id); 
+        navigate('/seeJob_Info');
+      })
+      .catch(err => {
+        console.error("Алдаа гарлаа:", err);
+      });
+  };
+
+
+
+
+
+
+
+
+  const handleDeleteClick = (id) => {
+    Axios.delete(`http://localhost:3001/delete_job/${id}`)
+      .then(() => {
+        setFoodList(foodList.filter(job => job._id !== id)); 
+      })
+      .catch(err => {
+        console.error("Error deleting job:", err);
+      });
+  };
+
+
+  const handleChangeClick = (jobId) => {
+    localStorage.setItem('editJobId', jobId);
+    navigate('/edit_job'); // or whatever route is used for job creation
   };
 
 
@@ -68,6 +118,9 @@ function User_jobs() {
 
   
   return (
+    <body>
+      
+    
     <div className='Main_container'>
       {/* Navigation Bar буюу App Bar */}
       <div className='navigation_bar'>
@@ -111,23 +164,137 @@ function User_jobs() {
 
 
      
-      <div className='Database_item_storing_container'>
+      <div className='Database_item_storing_container_when_inspecting'>
         {foodList.map((val, key) => (
           <div className='item' key={key}>
-            <div className='title_of_job'>
-              <h6>{val.job_head}</h6>
-            </div>
-            <div className='description_of_job'>
-              <h6>{val.job_description}</h6>
-            </div>
-            <h6>{val.name}</h6>
-            <h6>{val.jobType}</h6>
-            <button>apply</button>
+
+
+          <div className='title_of_job'>
+            
+            <h4>{val.job_head}</h4>
           </div>
+
+
+          <div className='description_of_job'>
+            <h6>{val.job_description}</h6>
+          </div>
+
+
+          <div className='time_type_of_job'>
+
+
+
+          
+
+
+
+
+
+
+            <div className='item_1'>
+
+
+              <div className='image_container_for_item_1'> 
+                <img 
+                src={Eye_icon} 
+                />  
+              </div>
+              <h6>Үзсэн {val.job_harsan_too}</h6>
+              
+              
+              
+            </div>
+
+
+
+
+
+
+
+
+
+
+           
+
+            
+
+
+          </div>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div className='tsalin_bolon_harah_button_container'>
+
+          <h4>₮{val.tsalin} </h4> 
+          
+          <button className='button_css'   onClick={() => handleEditClick(val._id)}>Харах</button>
+
+
+
+          <button className='delete_button_css'   onClick={() => handleDeleteClick(val._id)}>Устгах</button> 
+
+
+          <button className='change_button_css'   onClick={() => handleChangeClick(val._id)}>Өөрчлөх</button>  {/**Make this button change */}
+
+          </div>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </div>
         ))}
       </div>
       
     </div>
+    </body>
   );
 }
 

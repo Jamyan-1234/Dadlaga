@@ -7,7 +7,14 @@ import Part_time_icon from '../images/half.png';
 import Intern_icon from '../images/intern.png';
 import { Box, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import '../CSS_files/SeeJob_Info.css';
+
+
+
+
+
 import myImage from '../images/logo.png';
+import phone_icon from '../images/phone_icon.png';
+import email_icon from '../images/email_icon.png';
 
 // Энэ хэсэг нь хэрэглэгчийн сонирхсон зарыг бүтнээр харуулна
 //------------------------------------------------ Зар бүтнээр харах Page --------------------------------------------------------------------------------------
@@ -84,89 +91,169 @@ function SeeJob_Info() {
         </div>
         {/* End of Navigation Bar буюу App Bar */}
 
+
+
+
+
+
+
+
+
+
+
+
         <div className='Database_item_storing_container_for_when_seeing_specific_job'>
           {foodList.map((val, key) => (
+
+
             <div className='item_for_when_seeing_job_info' key={key}>
 
-              <div className='title_of_job_when_seeing_job_info'>
+              <div className='section_1'>
                 <h2>{val.job_head}</h2>
-              </div>
+                <div className='jijig_medeelluud_container'>
 
-              <div className='jijig_medeelluud_container'>
+                  <div className='jijig_info'>
+                    <div className='small_items_when_seeing_job_info'>
+                      <h5>Туршлага</h5>
+                    </div>
 
-                <div className='jijig_info'>
-                  <div className='small_items_when_seeing_job_info'>
-                    <h5>Туршлага</h5>
+                    <div className='small_items_when_seeing_job_info'>
+                      {val.job_turshlaga}
+                    </div>
                   </div>
 
-                  <div className='small_items_when_seeing_job_info'>
-                    {val.job_turshlaga}
+                  <div className='jijig_info'>
+                    <div className='small_items_when_seeing_job_info'>
+                      <h5>Ажиллах хэлбэр</h5>
+                    </div>
+
+                    <div className='small_items_when_seeing_job_info'>
+                      {val.jobType}
+                    </div>
                   </div>
+
+                  <div className='jijig_info'>
+                    <div className='small_items_when_seeing_job_info'>
+                      <h5>Байршил</h5>
+                    </div>
+
+                    <div className='small_items_when_seeing_job_info'>
+                      {val.job_bairshil}
+                    </div>
+                  </div>
+
+                  <div className='jijig_info'>
+                    <div className='small_items_when_seeing_job_info'>
+                      <h5>Зарлагч</h5>
+                    </div>
+
+                    <div className='small_items_when_seeing_job_info'>
+                      {val.job_zarlagch}
+                    </div>
+                  </div>
+
                 </div>
 
-                <div className='jijig_info'>
-                  <div className='small_items_when_seeing_job_info'>
-                    <h5>Ажиллах хэлбэр</h5>
+                <div className='Ajliin_tuhai_container'>
+                  <h2>Ажлын тухай</h2>
+                  <div className='ajil'>
+                  {val.buten_description}
                   </div>
 
-                  <div className='small_items_when_seeing_job_info'>
-                    {val.jobType}
-                  </div>
                 </div>
 
-                <div className='jijig_info'>
-                  <div className='small_items_when_seeing_job_info'>
-                    <h5>Байршил</h5>
+
+
+
+
+
+
+
+                <div className='Ajliin_tuhai_container'>
+                  <h2>Шаардлага</h2>
+                  <div className='ajil'>
+                  {val.job_shaardlaga}
                   </div>
 
-                  <div className='small_items_when_seeing_job_info'>
-                    {val.job_bairshil}
-                  </div>
-                </div>
-
-                <div className='jijig_info'>
-                  <div className='small_items_when_seeing_job_info'>
-                    <h5>Зарлагч</h5>
-                  </div>
-
-                  <div className='small_items_when_seeing_job_info'>
-                    {val.job_zarlagch}
-                  </div>
-                </div>
-
-              </div>
-
-              <div className='description_of_job'>
-                <h5>{val.buten_description}</h5>
-              </div>
-
-              <div className='time_type_of_job_when_seeing_job'>
-                <div className='item_1'>
-                  <div className='image_container_for_item_1'> 
-                    <img 
-                      src={
-                        val.jobType === 'full-time' 
-                          ? Full_time_icon 
-                          : val.jobType === 'Intern'
-                          ? Intern_icon
-                          : Part_time_icon
-                      } 
-                      alt="Job Type Icon"
-                    /> {/* Хэрвээ ажиллах цагийн төрөл нь full-time байвал бүтэн цагийг дүрслэх зургыг харуулна, */}
-                  </div>
-                  <h6>{val.jobType}</h6>
                 </div>
               </div>
 
-              <div className='tsalin_bolon_harah_button_container_when_seeing_job_info'>
-                <h4>₮{val.tsalin} /1 өдөр</h4> {val.job_zarlagch}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div className='section_2'>
+
+                <div className='tsalin_container_when_seeing_job'>
+                  <h2>₮{val.tsalin}</h2>
+
+                </div>
+
+                <div className='utasnii_dugaar_container_when_seeing_job'>
+                  <strong>Дугаар: {val.job_utasnii_dugaar}</strong>
+                  
+                  <div className='phone_icon_container'>
+                    <img src={phone_icon} alt="Phone Icon"/>
+                  </div>
+
+                </div>
+
+
+
+
+                <div className='email_container_when_seeing_job'>
+                  <strong>{val.job_email}</strong>
+                  
+                  <div className='phone_icon_container'>
+                    <img src={email_icon} alt="Phone Icon"/>
+                  </div>
+
+                </div>
+                
+
               </div>
+
+
+
+
+
+              
+
+              
+
+             
 
             </div>
           ))}
           <div className='test_box'>
+
+
+           
+
+
+
+
+
           </div>
         </div>
+        
+        
 
       </div>
     </body>

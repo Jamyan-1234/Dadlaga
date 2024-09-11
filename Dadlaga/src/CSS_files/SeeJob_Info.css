@@ -47,14 +47,12 @@
   
   
 .Database_item_storing_container_for_when_seeing_specific_job 
-{  /* Энэ нь Welcome page дээрх өгөгдлийн сангийн мэдээллүүдийг харуулж аврага том container-ын CSS*/
-  width: 85%;
-  height: 80%;
-  margin-top: 100px; 
+{  
+  width: 100%;
+  height: 100%;
+  margin-top: 30px; 
   margin-left: 10px;
-  border: 1px solid black;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
@@ -62,20 +60,50 @@
 .item_for_when_seeing_job_info 
 { 
   display: flex;                           /* Өгөгдлийн сангийн мэдээлэл нэг тус бүрийн CSS*/
-  flex-direction: column;
+  flex-direction: row;
   background-color: rgb(255, 255, 255);
-  text-align: center;
-  border-radius: 20px;
-  width: 1000px;
-  height: 570px;
+  width: 9000px;
+  height: 600px;
   justify-content: space-evenly;
+  border-radius: 30px;
+  margin-left: 50px;
+}
+
+
+
+
+
+
+
+
+
+.section_1
+{
+  display: flex;                          
+  flex-direction: column;
   align-items: center;
-  border-radius: 13px;
-  border: 1px solid rgb(0, 0, 0);
+  justify-content: space-evenly;
+  height: 100%;
+  width: 70%;
+ 
+
+}
+
+.section_2
+{
+  margin-top: 70px;
+  display: flex;                          
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 50%;
+  width: 20%;
+
 }
   
   
-  
+
+
   
   
 .title_of_job_when_seeing_job_info
@@ -106,7 +134,7 @@
   
   
   
-.description_of_job
+.description_of_job_when_seeing_job
 {
   height: 150px;
   width: 100%;
@@ -158,15 +186,7 @@
   
   
   
-.item_1
-{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-}
+
   
 .image_container_for_item_1
 {
@@ -186,13 +206,12 @@ img
 
 .jijig_medeelluud_container
 {
-  width: 100%;
-  height: 100px;
+  width: 90%;
+  height: 80px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
- 
   background-color: #f5f5f5;
   border-radius: 25px;
 }
@@ -209,17 +228,6 @@ img
 
 }
 
-.tsalin_bolon_harah_button_container_when_seeing_job_info
-{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  height: 50px;
-  width: 100%;
-  border: 1px solid rgb(37, 227, 120);
-}
-
 .small_items_when_seeing_job_info
 {
   height: 30px;
@@ -234,13 +242,106 @@ img
 {
   height: 570px;
   width: 300px;
-  border: 1px solid black;
 }
 
+
+
+.Big_container_that_stores_job_title_and_job_description_when_seeing_job_info
+{
+
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-around;
+  height: 200px;
+  width: 100%;
+ 
+  
+}
+
+.Ajliin_tuhai_container
+{
+  display: flex;
+  flex-direction: column;
+  height: 180px;
+  width: 90%;
+}
+
+
+
+.ajil
+{
+  height: 90%;
+  width: 100%;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 10px;
+
+}
+
+
+
+
+
+
+
+
+
+.tsalin_container_when_seeing_job
+{
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 100px;
+  width: 90%;
+  
+  background-color: rgb(252, 252, 168);
+}
+
+
+.utasnii_dugaar_container_when_seeing_job
+{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 70px;
+  width: 100%;
+  background-color: rgb(188, 219, 175);
+  border-radius: 10px;
+}
+
+.phone_icon_container
+{
+  height: 40px;
+  width: 40px;
+
+}
+  
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
   
   
   
   
+
+.email_container_when_seeing_job
+{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 70px;
+  width: 100%;
+  background-color: rgb(238, 197, 255);
+  border-radius: 10px;
+}
+
   
   
   

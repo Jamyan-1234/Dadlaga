@@ -41,17 +41,21 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  width: 20%;
+  
 }
 
 
 
 .Database_item_storing_container {  /* Энэ нь Welcome page дээрх өгөгдлийн сангийн мэдээллүүдийг харуулж аврага том container-ын CSS*/
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 3%;
-  width: 95%;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 2%; 
+  column-gap: 2%; 
+  width: 91%;
   margin-top: 15px; 
   margin-left: 10px;
+  
 
 }
 
@@ -61,7 +65,7 @@
   background-color: rgb(255, 255, 255);
   text-align: center;
   border-radius: 20px;
-  width: 100%;
+  width: 99%;
   align-items: center;
   border-radius: 13px;
 }
@@ -84,7 +88,7 @@
 }
 
 .image_container_of_profile
-{
+{margin-top: 20px;
   height:100%;
   width: 20%;
   border: 1px solid #000000;
@@ -152,13 +156,14 @@ body {
 {
 
   height: 35px;
-  width: 85px;
+  width: 135px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   background-color: #f1f1f1;
   border-radius: 5px;
+ 
 }
 
 
@@ -186,6 +191,7 @@ body {
   height: 15px;
   width: 15px;
   display: flex;
+  padding-right: 5px;
 
 }
 
@@ -208,10 +214,108 @@ img {
 
 
 
+.pls
+{
+  margin-top: 1300px;
+}
+
+
+/* Container for the label and textarea */
+.salary-range-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Space between label and textarea */
+  margin-bottom: 1rem; /* Space below the container */
+  margin-top: -15px;
+}
+
+/* Style for the label */
+.salary-range-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Style for the textarea */
+.long-textbox {
+  width: 100%; /* Full width */
+  min-height: 40px; /* Reduced height */
+  padding: 0.5rem; /* Reduced padding */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.875rem; /* Smaller font size */
+  resize: vertical; /* Allows vertical resizing only */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  display: flex; /* Flex container for centering text */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  text-align: center; /* Center text alignment */
+}
+
+/* Style for the textarea placeholder */
+.long-textbox::placeholder {
+  color: #888; /* Placeholder color */
+  font-style: italic; /* Italicize placeholder text */
+}
+
+/* Style for the textarea on focus */
+.long-textbox:focus {
+  border-color: #007bff; /* Border color on focus */
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.25); /* Shadow on focus */
+  outline: none; /* Remove default outline */
+}
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+.Database_item_storing_container_when_inspecting {  /* Э page дээрх өгөгдлийн сангийн мэдээллүүдийг харуулж аврага том container-ын CSS*/
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 2%; 
+  column-gap: 2%; 
+  width: 91%;
+  margin-top: 150px; 
+  margin-left: 10px;
+  
+
+}
+
+.delete_button_css
+{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 30px;
+  background-color: rgb(255, 94, 110);
+  display: flex;
+  color: #f1f1f1;
+}
+
+
+
+
+.change_button_css
+{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 30px;
+  background-color: rgb(71, 189, 79);
+  display: flex;
+  color: #f1f1f1;
+}
 
 
 

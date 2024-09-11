@@ -4,13 +4,14 @@ const mongoose = require('mongoose');
 const FormDataModel = require ('./models/FormData');
 const FormDataModel1 = require ('./models/Job_Model');
 const bodyParser = require('body-parser');
+const multer = require('multer');
 const app = express();
 app.use(express.json());
 app.use(cors());
 const port = 3000;
 
-
-
+const storage = multer.memoryStorage(); // Store files in memory
+const upload = multer({ storage });
 
 
 
@@ -27,6 +28,35 @@ const port = 3000;
 mongoose.connect('mongodb+srv://tester:tester123456789@database.jm0jwxa.mongodb.net/Parent_Database?retryWrites=true&w=majority&appName=Database');
 //----↑------↑--------Өгөгдлийн сантай холбогдож буй хэсэг--↑----↑--↑-//
 
+
+
+
+//---↓---↓--------↓--------↓---------↓---------↓----- Бүртгэл үүсгэсний дараа өөрийн зургыг үүсгэх----↓----------↓----↓---------↓-------↓--//
+app.post('/upload', upload.single('image'), async (req, res) => {                       //(ACTIVE)
+  const userEmail = req.body.email || req.headers['user-email']; // Get user email from request body or headers
+
+  try {
+    // Find the user by email
+    const user = await FormDataModel.findOne({ email: userEmail });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Update the user's document with the image
+    user.image = {
+      data: req.file.buffer,
+      contentType: req.file.mimetype,
+    };
+
+    await user.save();
+
+    res.json({ message: 'Image uploaded successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to upload image' });
+  }
+});
+//----↑------↑-------↑--------↑-----↑-----↑----↑------Бүртгэл үүсгэсний дараа өөрийн зургыг үүсгэх------↑----------↑---------↑--------↑----//
 
 
 
@@ -272,6 +302,15 @@ app.put('/increment_seen/:id', async (req, res) => {
 
 
 
+app.delete('/delete_job/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await FormDataModel1.findByIdAndDelete(id);
+    res.status(200).send({ message: 'Job deleted successfully' });
+  } catch (err) {
+    res.status(500).send({ message: 'Error deleting job' });
+  }
+});
 
 
 
